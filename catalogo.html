@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eternals Roses - Catálogo de Ramos</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f4f2ee;
+            position: relative;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            background: url("fondo..jpg") center/cover no-repeat;
+            opacity: 0.7;
+        }
+
+        header {
+            background: linear-gradient(rgba(255,255,255,.4), rgba(255,255,255,0));
+            padding: 20px 20px 28px;
+            text-align: center;
+            border-bottom: 1px solid rgba(194,24,91,.25);
+        }
+
+        .logo {
+            width: min(400px, 85vw);
+            height: auto;
+            mix-blend-mode: multiply;
+            display: block;
+            margin: 0 auto 6px;
+        }
+
+        header p {
+            font-size: 15px;
+            color: #666;
+        }
+
+        header .location {
+            font-size: 13px;
+            color: #999;
+        }
+
+        nav {
+            background: rgba(255,255,255,.9);
+            backdrop-filter: blur(6px);
+            padding: 14px 20px;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav a {
+            margin: 0 14px;
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            font-size: 14px;
+            transition: color 0.3s;
+        }
+
+        nav a:hover { color: #e91e63; }
+
+        section {
+            max-width: 1100px;
+            margin: 40px auto;
+            padding: 0 16px;
+        }
+
+        section h2 {
+            text-align: center;
+            font-size: 32px;
+            margin-bottom: 30px;
+            color: #c2185b;
+            font-weight: 300;
+        }
+
+        .tier-nav {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            margin: -10px 0 35px;
+        }
+
+        .chip {
+            text-decoration: none;
+            padding: 9px 18px;
+            border-radius: 25px;
+            font-weight: 600;
+            font-size: 14px;
+            color: #fff;
+        }
+
+        .chip small { font-weight: 400; opacity: .9; margin-left: 3px; }
+        .chip-basico { background: #e58aab; }
+        .chip-clasico { background: #d4568a; }
+        .chip-premium { background: #b0245f; }
+        .chip-lujo { background: #6e1238; }
+
+        .tier { margin-bottom: 50px; scroll-margin-top: 70px; }
+
+        .tier-header {
+            text-align: center;
+            margin-bottom: 25px;
+            padding: 20px 16px;
+            border-radius: 12px;
+            color: #fff;
+        }
+
+        .tier-header h3 {
+            font-size: 26px;
+            font-weight: 500;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .tier-header .tier-range {
+            display: inline-block;
+            margin-top: 4px;
+            font-size: 15px;
+            font-weight: 600;
+            background: rgba(255,255,255,.22);
+            padding: 3px 12px;
+            border-radius: 20px;
+        }
+
+        .tier-header p {
+            margin-top: 8px;
+            font-size: 13px;
+            opacity: .95;
+        }
+
+        .tier-basico .tier-header { background: linear-gradient(135deg,#f1a9c3,#e58aab); }
+        .tier-clasico .tier-header { background: linear-gradient(135deg,#e0699a,#d4568a); }
+        .tier-premium .tier-header { background: linear-gradient(135deg,#c13472,#b0245f); }
+        .tier-lujo .tier-header { background: linear-gradient(135deg,#8a1c4b,#6e1238); }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 24px;
+        }
+
+        .product-card {
+            background: rgba(255,255,255,0.95);
+            border-radius: 14px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-align: center;
+        }
+
+        .product-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 240px;
+            object-fit: cover;
+            display: block;
+            background: #f3e3ea;
+        }
+
+        .product-info {
+            padding: 18px 16px 22px;
+        }
+
+        .product-info h3 {
+            font-size: 17px;
+            margin-bottom: 6px;
+            color: #333;
+            font-weight: 500;
+        }
+
+        .product-info p {
+            font-size: 13px;
+            color: #666;
+            margin-bottom: 8px;
+        }
+
+        .price {
+            font-size: 18px;
+            font-weight: bold;
+            color: #c2185b;
+            margin: 8px 0;
+        }
+
+        .product-tag {
+            display: inline-block;
+            background-color: #f8bbd0;
+            color: #c2185b;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 11px;
+            margin-top: 6px;
+        }
+
+        .button {
+            display: inline-block;
+            background-color: #e91e63;
+            color: #fff;
+            padding: 9px 18px;
+            border-radius: 25px;
+            text-decoration: none;
+            margin-top: 10px;
+            font-size: 13px;
+            font-weight: 500;
+            transition: background-color 0.3s;
+        }
+
+        .button:hover { background-color: #c2185b; }
+
+        footer {
+            background-color: #333;
+            color: #fff;
+            padding: 35px 20px;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        footer h3 { margin-bottom: 12px; font-size: 18px; }
+
+        .contact-info {
+            margin: 16px 0;
+            font-size: 14px;
+            line-height: 1.8;
+        }
+
+        .tagline {
+            font-style: italic;
+            color: #bbb;
+            margin-top: 18px;
+            font-size: 15px;
+        }
+
+        .whatsapp-float {
+            position: fixed;
+            bottom: 22px;
+            right: 22px;
+            background-color: #25D366;
+            color: white;
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            z-index: 1000;
+            text-decoration: none;
+            transition: transform 0.25s;
+        }
+
+        .whatsapp-float:hover { transform: scale(1.1); }
+
+        .back-home {
+            display: inline-block;
+            margin: 20px auto;
+            background: #c2185b;
+            color: white;
+            padding: 10px 22px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        @media (max-width: 600px) {
+            .gallery { grid-template-columns: 1fr; }
+            section h2 { font-size: 26px; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <a href="index.html"><img src="logo..jpg" alt="Eternals Roses" class="logo"></a>
+    <p>Flores frescas para cada momento especial</p>
+    <div class="location">📍 Comayagua, Honduras</div>
+</header>
+
+<nav>
+    <a href="index.html">Inicio</a>
+    <a href="#basico">Básico</a>
+    <a href="#clasico">Clásico</a>
+    <a href="#premium">Premium</a>
+    <a href="#lujo">Lujo</a>
+    <a href="#contacto">Contacto</a>
+</nav>
+
+<section id="arreglos">
+    <h2>Nuestros Ramos</h2>
+
+    <div class="tier-nav">
+        <a href="#basico" class="chip chip-basico">Básico <small>hasta L 700</small></a>
+        <a href="#clasico" class="chip chip-clasico">Clásico <small>L 850 – 1,200</small></a>
+        <a href="#premium" class="chip chip-premium">Premium <small>L 1,300 – 1,800</small></a>
+        <a href="#lujo" class="chip chip-lujo">Lujo <small>desde L 2,000</small></a>
+    </div>
+
+    <!-- ========== BÁSICO ========== -->
+    <div class="tier tier-basico" id="basico">
+        <div class="tier-header">
+            <h3>Básico</h3>
+            <span class="tier-range">hasta L 700</span>
+            <p>Detalles frescos y accesibles para sorprender.</p>
+        </div>
+        <div class="gallery">
+
+            <div class="product-card">
+                <div class="product-info">
+                    <h3>Ramo Mini</h3>
+                    <p>Gerberas, clavel y follaje</p>
+                    <p class="price">L 300</p>
+                    <span class="product-tag">Básico</span><br>
+                    <a href="https://wa.me/50494221224?text=Hola%2C%20quiero%20el%20Ramo%20Mini%20(L%20300)" class="button" target="_blank">Consultar por WhatsApp</a>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-info">
+                    <h3>Ramo Económico</h3>
+                    <p>Claveles, gerbera y follajes</p>
+                    <p class="price">L 350</p>
+                    <span class="product-tag">Básico</span><br>
+                    <a href="https://wa.me/50494221224?text=Hola%2C%20quiero%20el%20Ramo%20Econ%C3%B3mico%20(L%20350)" class="button" target="_blank">Consultar por WhatsApp</a>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-info">
+                    <h3>Ramo de Gerberas y Eucalipto</h3>
+                    <p>Gerberas con eucalipto</p>
+                    <p class="price">L 400</p>
+                    <span class="product-tag">Básico</span><br>
+                    <a href="https://wa.me/50494221224?text=Hola%2C%20quiero%20el%20Ramo%20de%20Gerberas%20y%20Eucalipto%20(L%20400)" class="button" target="_blank">Consultar por WhatsApp</a>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-info">
+                    <h3>Ramo Mixto Pequeño</h3>
+                    <p>Lirios, rosas y baby</p>
+                    <p class="price">L 550</p>
+                    <span class="product-tag">Básico</span><br>
+                    <a href="https://wa.me/50494221224?text=Hola%2C%20quiero%20el%20Ramo%20Mixto%20Peque%C3%B1o%20(L%20550)" class="button" target="_blank">Consultar por WhatsApp</a>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-info">
+                    <h3>Ramo Mixto</h3>
+                    <p>Gerberas, lirios y baby</p>
+                    <p class="price">L 550</p>
+                    <span class="product-tag">Básico</span><br>
+                    <a href="https://wa.me/50494221224?text=Hola%2C%20quiero%20el%20Ramo%20Mixto%20(L%20550)" class="button" target="_blank">Consultar por WhatsApp</a>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-info">
+                    <h3>Ramo de Gerberas</h3>
+                    <p>Gerberas con follajes mixtos</p>
+                    <p class="price">L 650</p>
+                    <span class="product-tag">Básico</span><br>
+                    <a href="https://wa.me/50494221224?text=Hola%2C%20quiero%20el%20Ramo%20de%20Gerberas%20(L%20650)" class="button" target="_blank">Consultar por WhatsApp</a>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-info">
+                    <h3>Ramo de Gerberas y Baby</h3>
+                    <p>Gerberas con baby</p>
+                    <p class="price">L 650</p>
+                    <span class="product-tag">Básico</span><br>
+                    <a href="https://wa.me/50494221224?text=Hola%2C%20quiero%20el%20Ramo%20de%20Gerberas%20y%20Baby%20(L%20650)" class="button" target="_blank">Consultar por WhatsApp</a>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-info">
+                    <h3>Arreglo de Rosas, Gerberas y Eucalipto</h3>
+                    <p>Arreglo mediano fresco y colorido</p>
+                    <p class="price">L 650</p>
+                    <span class="product-tag">Básico</span><br>
+                    <a href="https://wa.me/50494221224?text=Hola%2C%20quiero%20el%20Arreglo%20de%20Rosas%2C%20Gerberas%20y%20Eucalipto%20(L%20650)" class="button" target="_blank">Consultar por WhatsApp</a>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-info">
+                    <h3>Ramo Pequeño de Lirios</h3>
+                    <p>Lirios frescos en ramo pequeño</p>
+                    <p class="price">L 700</p>
+                    <span class="product-tag">Básico</span><br>
+                    <a href="https://wa.me/50494221224?text=Hola%2C%20quiero%20el%20Ramo%20Peque%C3%B1o%20de%20Lirios%20(L%20700)" class="button" target="_blank">Consultar por WhatsApp</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- ========== CLÁSICO ========== -->
+    <div class="tier tier-clasico" id="clasico">
+        <div class="tier-header">
+            <h3>Clásico</h3>
+            <span class="tier-range">L 850 a L 1,200</span>
+            <p>Nuestros ramos favoritos para cualquier ocasión.</p>
+        </div>
+        <div class="gallery">
+
+            <div class="product-card">
+                <div class="product-info">
+                    <h3>Ramo Mariposa</h3>
+                    <p>Lirio, rosas y baby</p>
+                    <p class="price">L 850</p>
+                    <span class="product-tag">Clásico</span><br>
+                    <a href="https://wa.me/50494221224?text=Hola%2C%20quiero%20el%20Ramo%20Mariposa%20(L%20850)" class="button" target="_blank">Consultar por WhatsApp</a>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-info">
+                    <h3>Ramo de Lirios</h3>
+                    <p>Disponible en tres tamaños</p>
+                    <p class="price">L 900 – L 1,800</p>
+                    <span class="product-tag">Clásico</span><br>
+                    <a href="https://wa.me/50494221224?text=Hola%2C%20quiero%20el%20Ramo%20de%20Lirios" class="button" target="_blank">Consultar por WhatsApp</a>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-info">
+                    <h3>Ramo de Gerberas y Lirios</h3>
+                    <p>Gerberas con lirios</p>
+                    <p class="price">L 950</p>
+                    <span class="product-tag">Clásico</span><br>
+                    <a href="https://wa.me/50494221224?text=Hola%2C%20quiero%20el%20Ramo%20de%20Gerberas%20y%20Lirios%20(L%20950)" class="button" target="_blank">Consultar por WhatsApp</a>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-info">
+                    <h3>Ramo Mini de Gerbera y Hortensia</h3>
+                    <p>Mini gerberas y hortensia</p>
+                    <p class="price">L 950</p>
+                    <span class="product-tag">Clásico</span><br>
+                    <a href="https://wa.me/50494221224?text=Hola%2C%20quiero%20el%20Ramo%20Mini%20de%20Gerbera%20y%20Hortensia%20(L%20950)" class="button" target="_blank">Consultar por WhatsApp</a>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-info">
+                    <h3>Ramo Mixto</h3>
+                    <p>Gerberas, rosas y claveles</p>
+                    <p class="price">L 950</p>
+                    <span class="product-tag">Clásico</span><br>
+                    <a href="https://wa.me/50494221224?text=Hola%2C%20quiero%20el%20Ramo%20Mixto%20(L%20950)" class="button" target="_blank">Consultar por WhatsApp</a>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-info">
+                    <h3>Ramo de Gerberas y Margaritas</h3>
+                    <p>Gerberas con margaritas</p>
+                    <p class="price">L 1,000</p>
+                    <span class="product-tag">Clásico</span><br>
+                    <a href="https://wa.me/50494221224?text=Hola%2C%20quiero%20el%20Ramo%20de%20Gerberas%20y%20Margaritas%20(L%201000)" class="button" target="_blank">Consultar por WhatsApp</a>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-info">
+                    <h3>Ramo de Rosas Inglesas</h3>
+                    <p>Rosas inglesas</p>
+                    <p class="price">L 1,000</p>
+                    <span class="product-tag">Clásico</span><br>
+                    <a href="https://wa.me/50494221224?text=Hola%2C%20quiero%20el%20Ramo%20de%20Rosas%20Inglesas%20(L%201000)" class="button" target="_blank">Consultar por WhatsApp</a>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-info">
+                    <h3>Gerberas y Rosas</h3>
+                    <p>Pequeño L 1,100 · Grande L 1,800</p>
+                    <p class="price">L 1,100 – L 1,800</p>
+                    <span class="product-tag">Clásico</span><br>
+                    <a href="https://wa.me/50494221224?text=Hola%2C%20quiero%20Gerberas%20y%20Rosas" class="button" target="_blank">Consultar por WhatsApp</a>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-info">
+                    <h3>Ramo de 24 Rosas</h3>
+                    <p>24 rosas y eucalipto (varios tonos)</p>
+                    <p class="price">L 1,200</p>
+                    <span class="product-tag">Clásico</span><br>
+                    <a href="https://wa.me/50494221224?text=Hola%2C%20quiero%20el%20Ramo%20de%2024%20Rosas%20(L%201200)" class="button" target="_blank">Consultar por WhatsApp</a>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-info">
+                    <h3>Ramo de 24 Rosas y Baby</h3>
+                    <p>24 rosas con baby</p>
+                    <p class="price">L 1,200</p>
+                    <span class="product-tag">Clásico</span><br>
+                    <a href="https://wa.me/50494221224?text=Hola%2C%20quiero%20el%20Ramo%20de%2024%20Rosas%20y%20Baby%20(L%201200)" class="button" target="_blank">Consultar por WhatsApp</a>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-info">
+                    <h3>Ramo de Gerberas Redondo</h3>
+                    <p>Gerberas en ramo redondo</p>
+                    <p class="price">L 1,200</p>
+                    <span class="product-tag">Clásico</span><br>
+                    <a href="https://wa.me/50494221224?text=Hola%2C%20quiero%20el%20Ramo%20de%20Gerberas%20Redondo%20(L%201200)" class="button" target="_blank">Consultar por WhatsApp</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- ========== PREMIUM ========== -->
+    <div class="tier tier-premium" id="premium">
+        <div class="tier-header">
+            <h3>Premium</h3>
+            <span class="tier-range">L 1,300 a L 1,800</span>
+            <p>Diseños elaborados con flores selectas.</p>
+        </div>
+        <div class="gallery">
+
+            <div class="product-card">
+                <div class="product-info">
+                    <h3>Ramo de Graduación</h3>
+                    <p>Rosas, piedras y listón</p>
+                    <p class="price">L 1,300</p>
+                    <span class="product-tag">Premium</span><br>
+                    <a href="https://wa.me/50494221224?text=Hola%2C%20quiero%20el%20Ramo%20de%20Graduaci%C3%B3n%20(L%201300)" class="button" target="_blank">Consultar por WhatsApp</a>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-info">
+                    <h3>Ramo Aurora Mediano</h3>
+                    <p>Lirios premium y rosas</p>
+                    <p class="price">L 1,400</p>
+                    <span class="product-tag">Premium</span><br>
+                    <a href="https://wa.me/50494221224?text=Hola%2C%20quiero%20el%20Ramo%20Aurora%20Mediano%20(L%201400)" class="button" target="_blank">Consultar por WhatsApp</a>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-info">
+                    <h3>Ramo Rosita</h3>
+                    <p>Gerberas, claveles y follajes</p>
+                    <p class="price">L 1,500</p>
+                    <span class="product-tag">Premium</span><br>
+                    <a href="https://wa.me/50494221224?text=Hola%2C%20quiero%20el%20Ramo%20Rosita%20(L%201500)" class="button" target="_blank">Consultar por WhatsApp</a>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-info">
+                    <h3>Ramo de Rosas, Girasol y Orquídea</h3>
+                    <p>Rosas, girasol y orquídea</p>
+                    <p class="price">L 1,700</p>
+                    <span class="product-tag">Premium</span><br>
+                    <a href="https://wa.me/50494221224?text=Hola%2C%20quiero%20el%20Ramo%20de%20Rosas%2C%20Girasol%20y%20Orqu%C3%ADdea%20(L%201700)" class="button" target="_blank">Consultar por WhatsApp</a>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-info">
+                    <h3>Ramo Aurora Mixto</h3>
+                    <p>Rosas, gerberas, lirios, baby y follaje</p>
+                    <p class="price">L 1,700</p>
+                    <span class="product-tag">Premium</span><br>
+                    <a href="https://wa.me/50494221224?text=Hola%2C%20quiero%20el%20Ramo%20Aurora%20Mixto%20(L%201700)" class="button" target="_blank">Consultar por WhatsApp</a>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-info">
+                    <h3>Ramo de 50 Rosas y Baby</h3>
+                    <p>50 rosas con baby</p>
+                    <p class="price">L 1,800</p>
+                    <span class="product-tag">Premium</span><br>
+                    <a href="https://wa.me/50494221224?text=Hola%2C%20quiero%20el%20Ramo%20de%2050%20Rosas%20y%20Baby%20(L%201800)" class="button" target="_blank">Consultar por WhatsApp</a>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-info">
+                    <h3>Ramo Buchón de Girasoles</h3>
+                    <p>Girasoles en ramo buchón</p>
+                    <p class="price">L 1,800</p>
+                    <span class="product-tag">Premium</span><br>
+                    <a href="https://wa.me/50494221224?text=Hola%2C%20quiero%20el%20Ramo%20Buch%C3%B3n%20de%20Girasoles%20(L%201800)" class="button" target="_blank">Consultar por WhatsApp</a>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-info">
+                    <h3>Ramo Temático</h3>
+                    <p>Girasoles, rosas y shastas</p>
+                    <p class="price">L 1,800</p>
+                    <span class="product-tag">Premium</span><br>
+                    <a href="https://wa.me/50494221224?text=Hola%2C%20quiero%20el%20Ramo%20Tem%C3%A1tico%20(L%201800)" class="button" target="_blank">Consultar por WhatsApp</a>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-info">
+                    <h3>Ramo Mixto Premium</h3>
+                    <p>Gerberas, lirios, rosas, margaritas y eucalipto</p>
+                    <p class="price">L 1,800</p>
+                    <span class="product-tag">Premium</span><br>
+                    <a href="https://wa.me/50494221224?text=Hola%2C%20quiero%20el%20Ramo%20Mixto%20Premium%20(L%201800)" class="button" target="_blank">Consultar por WhatsApp</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- ========== LUJO ========== -->
+    <div class="tier tier-lujo" id="lujo">
+        <div class="tier-header">
+            <h3>Lujo</h3>
+            <span class="tier-range">desde L 2,000</span>
+            <p>Nuestras piezas más espectaculares.</p>
+        </div>
+        <div class="gallery">
+
+            <div class="product-card">
+                <div class="product-info">
+                    <h3>Ramo Aurora Suelto</h3>
+                    <p>Lirios premium y rosas</p>
+                    <p class="price">L 2,000</p>
+                    <span class="product-tag">Lujo</span><br>
+                    <a href="https://wa.me/50494221224?text=Hola%2C%20quiero%20el%20Ramo%20Aurora%20Suelto%20(L%202000)" class="button" target="_blank">Consultar por WhatsApp</a>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-info">
+                    <h3>Ramo Aurora</h3>
+                    <p>Lirios, rosas y eucalipto</p>
+                    <p class="price">L 2,000</p>
+                    <span class="product-tag">Lujo</span><br>
+                    <a href="https://wa.me/50494221224?text=Hola%2C%20quiero%20el%20Ramo%20Aurora%20(L%202000)" class="button" target="_blank">Consultar por WhatsApp</a>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-info">
+                    <h3>Ramo de Rosas, Lisianthus y Lirios</h3>
+                    <p>Rosas, lisianthus y lirios</p>
+                    <p class="price">L 2,200</p>
+                    <span class="product-tag">Lujo</span><br>
+                    <a href="https://wa.me/50494221224?text=Hola%2C%20quiero%20el%20Ramo%20de%20Rosas%2C%20Lisianthus%20y%20Lirios%20(L%202200)" class="button" target="_blank">Consultar por WhatsApp</a>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-info">
+                    <h3>Ramo Buchón 70 Rosas</h3>
+                    <p>70 rosas mixtas</p>
+                    <p class="price">L 2,800</p>
+                    <span class="product-tag">Lujo</span><br>
+                    <a href="https://wa.me/50494221224?text=Hola%2C%20quiero%20el%20Ramo%20Buch%C3%B3n%2070%20Rosas%20(L%202800)" class="button" target="_blank">Consultar por WhatsApp</a>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-info">
+                    <h3>Maxi Ramo Temático</h3>
+                    <p>Girasoles, claveles, gerberas y follajes</p>
+                    <p class="price">L 2,800</p>
+                    <span class="product-tag">Lujo</span><br>
+                    <a href="https://wa.me/50494221224?text=Hola%2C%20quiero%20el%20Maxi%20Ramo%20Tem%C3%A1tico%20(L%202800)" class="button" target="_blank">Consultar por WhatsApp</a>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-info">
+                    <h3>Ramo de Tulipanes y Rosas</h3>
+                    <p>Tulipanes rosados combinados con rosas</p>
+                    <p class="price">L 3,000</p>
+                    <span class="product-tag">Lujo</span><br>
+                    <a href="https://wa.me/50494221224?text=Hola%2C%20quiero%20el%20Ramo%20de%20Tulipanes%20y%20Rosas%20(L%203000)" class="button" target="_blank">Consultar por WhatsApp</a>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-info">
+                    <h3>Maxi Ramo Buchón Rosa</h3>
+                    <p>Lirios, rosas, claveles y gerberas</p>
+                    <p class="price">L 3,500</p>
+                    <span class="product-tag">Lujo</span><br>
+                    <a href="https://wa.me/50494221224?text=Hola%2C%20quiero%20el%20Maxi%20Ramo%20Buch%C3%B3n%20Rosa%20(L%203500)" class="button" target="_blank">Consultar por WhatsApp</a>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-info">
+                    <h3>Arreglo de 100 Rosas</h3>
+                    <p>100 rosas rojas premium</p>
+                    <p class="price">L 4,000</p>
+                    <span class="product-tag">Lujo</span><br>
+                    <a href="https://wa.me/50494221224?text=Hola%2C%20quiero%20el%20Arreglo%20de%20100%20Rosas%20(L%204000)" class="button" target="_blank">Consultar por WhatsApp</a>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-info">
+                    <h3>Arreglo de Rosas y Orquídeas</h3>
+                    <p>Rosas rojas y orquídeas naturales blancas</p>
+                    <p class="price">L 5,200</p>
+                    <span class="product-tag">Lujo</span><br>
+                    <a href="https://wa.me/50494221224?text=Hola%2C%20quiero%20el%20Arreglo%20de%20Rosas%20y%20Orqu%C3%ADdeas%20(L%205200)" class="button" target="_blank">Consultar por WhatsApp</a>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-info">
+                    <h3>Ramo Temático con Peluche</h3>
+                    <p>El precio varía según el peluche</p>
+                    <p class="price">Consultar</p>
+                    <span class="product-tag">Lujo</span><br>
+                    <a href="https://wa.me/50494221224?text=Hola%2C%20quiero%20el%20Ramo%20Tem%C3%A1tico%20con%20Peluche" class="button" target="_blank">Consultar por WhatsApp</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<div style="text-align:center; margin: 30px 0;">
+    <a href="index.html" class="back-home">← Volver al inicio</a>
+</div>
+
+<footer id="contacto">
+    <h3>Eternals Roses</h3>
+    <div class="contact-info">
+        <p>📍 Comayagua, Honduras</p>
+        <p>📱 WhatsApp: +504 9422-1224</p>
+    </div>
+    <p class="tagline">Detalles que florecen para siempre</p>
+</footer>
+
+<a href="https://wa.me/50494221224?text=Hola%2C%20quiero%20información%20sobre%20los%20arreglos%20florales" 
+   class="whatsapp-float" target="_blank" rel="noopener">💬</a>
+
+</body>
+</html>
