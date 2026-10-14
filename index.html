@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Eternal Roses | Detalles que florecen para siempre</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: #333;
+      line-height: 1.6;
+      background-color: #f4f2ee;
+      position: relative;
+      min-height: 100vh;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      background: url("fondo..jpg") center/cover no-repeat;
+      opacity: 0.85;
+    }
+
+    .container {
+      max-width: 480px;
+      margin: 0 auto;
+      padding: 20px 16px 60px;
+    }
+
+    .header {
+      text-align: center;
+      padding: 16px 10px 24px;
+      background: linear-gradient(rgba(255,255,255,.5), rgba(255,255,255,0));
+      border-radius: 0 0 20px 20px;
+      margin-bottom: 18px;
+    }
+
+    .logo {
+      width: min(360px, 88vw);
+      height: auto;
+      mix-blend-mode: multiply;
+      display: block;
+      margin: 0 auto 6px;
+    }
+
+    .slogan {
+      font-size: 1rem;
+      color: #c2185b;
+      font-weight: 500;
+    }
+
+    .location {
+      font-size: 0.85rem;
+      color: #888;
+      margin-top: 3px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-bottom: 26px;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.93);
+      border-radius: 18px;
+      padding: 22px 12px;
+      text-align: center;
+      box-shadow: 0 4px 15px rgba(194, 24, 91, 0.08);
+      border: 1px solid rgba(233, 30, 99, 0.12);
+      transition: transform 0.2s, box-shadow 0.2s;
+      text-decoration: none;
+      display: block;
+      color: inherit;
+    }
+
+    .card.active {
+      border: 2px solid #e91e63;
+      background: linear-gradient(135deg, #fff5f7 0%, #ffe4ec 100%);
+    }
+
+    .card.active:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 22px rgba(233, 30, 99, 0.2);
+    }
+
+    .card .icon {
+      font-size: 1.9rem;
+      margin-bottom: 8px;
+      display: block;
+    }
+
+    .card h3 {
+      font-size: 0.98rem;
+      font-weight: 600;
+      color: #c2185b;
+      margin-bottom: 3px;
+    }
+
+    .card .subtitle {
+      font-size: 0.78rem;
+      color: #888;
+    }
+
+    .card.coming-soon {
+      opacity: 0.7;
+      background: rgba(255, 255, 255, 0.78);
+      pointer-events: none;
+    }
+
+    .card.coming-soon h3 { color: #999; }
+
+    .card .badge {
+      display: inline-block;
+      margin-top: 10px;
+      background: #f8bbd0;
+      color: #c2185b;
+      font-size: 0.68rem;
+      font-weight: 700;
+      padding: 4px 11px;
+      border-radius: 20px;
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+    }
+
+    .btn-catalogo {
+      display: block;
+      width: 100%;
+      background: linear-gradient(135deg, #e91e63, #c2185b);
+      color: white;
+      text-align: center;
+      padding: 16px;
+      border-radius: 14px;
+      font-size: 1.05rem;
+      font-weight: 600;
+      text-decoration: none;
+      margin-bottom: 26px;
+      box-shadow: 0 4px 15px rgba(233, 30, 99, 0.3);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .btn-catalogo:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(233, 30, 99, 0.4);
+    }
+
+    .section {
+      background: rgba(255, 255, 255, 0.94);
+      border-radius: 18px;
+      padding: 22px 18px;
+      margin-bottom: 18px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+      border: 1px solid rgba(233, 30, 99, 0.1);
+    }
+
+    .section-title {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      color: #fff;
+      background: linear-gradient(135deg, #e91e63, #c2185b);
+      padding: 10px 14px;
+      border-radius: 12px;
+      margin: -22px -18px 18px -18px;
+      text-align: center;
+    }
+
+    .philosophy {
+      font-size: 1.15rem;
+      font-style: italic;
+      text-align: center;
+      color: #c2185b;
+      padding: 6px 4px;
+      line-height: 1.5;
+      font-weight: 500;
+    }
+
+    .section h2 {
+      font-size: 1.05rem;
+      font-weight: 600;
+      margin-bottom: 10px;
+      color: #c2185b;
+    }
+
+    .section p {
+      font-size: 0.9rem;
+      color: #444;
+      text-align: justify;
+    }
+
+    .footer {
+      text-align: center;
+      margin-top: 24px;
+      font-size: 0.82rem;
+      color: #888;
+    }
+
+    .footer strong { color: #c2185b; }
+
+    .whatsapp-float {
+      position: fixed;
+      bottom: 22px;
+      right: 22px;
+      background-color: #25D366;
+      color: white;
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+      z-index: 1000;
+      text-decoration: none;
+      transition: transform 0.25s;
+    }
+    .whatsapp-float:hover { transform: scale(1.1); }
+
+    /* Estilos para la guía de cuidados expandible */
+    .care-preview {
+      font-size: 0.9rem;
+      color: #444;
+      text-align: justify;
+      margin-bottom: 12px;
+    }
+
+    .care-toggle {
+      display: block;
+      width: 100%;
+      background: linear-gradient(135deg, #fff5f7, #ffe4ec);
+      border: 1.5px solid #e91e63;
+      color: #c2185b;
+      padding: 12px 16px;
+      border-radius: 12px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      cursor: pointer;
+      text-align: center;
+      transition: background 0.2s, transform 0.2s;
+    }
+
+    .care-toggle:hover {
+      background: linear-gradient(135deg, #ffe4ec, #f8bbd0);
+      transform: translateY(-1px);
+    }
+
+    .care-full {
+      display: none;
+      margin-top: 16px;
+      animation: fadeIn 0.3s ease;
+    }
+
+    .care-full.open {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .care-full h3 {
+      font-size: 1rem;
+      color: #c2185b;
+      margin: 16px 0 8px;
+      font-weight: 600;
+    }
+
+    .care-full h3:first-child {
+      margin-top: 0;
+    }
+
+    .care-full p {
+      font-size: 0.88rem;
+      color: #444;
+      text-align: justify;
+      margin-bottom: 10px;
+    }
+
+    .care-full ol {
+      margin: 8px 0 12px 18px;
+    }
+
+    .care-full li {
+      font-size: 0.88rem;
+      color: #444;
+      margin-bottom: 10px;
+      text-align: justify;
+    }
+
+    .care-full li strong {
+      color: #c2185b;
+    }
+
+    .care-closing {
+      font-style: italic;
+      text-align: center;
+      color: #c2185b;
+      margin-top: 16px;
+      font-size: 0.9rem;
+      line-height: 1.5;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+
+    <div class="header">
+      <img src="logo..jpg" alt="Eternals Roses by Jade Banegas" class="logo">
+      <p class="slogan">Detalles que florecen para siempre</p>
+      <div class="location">📍 Comayagua, Honduras</div>
+    </div>
+
+    <a href="catalogo.html" class="btn-catalogo">
+      🌸 Ver catálogo completo de ramos
+    </a>
+
+    <div class="grid">
+      <a href="catalogo.html" class="card active">
+        <span class="icon">🌸</span>
+        <h3>Ramos y flores</h3>
+        <p class="subtitle">Básico a lujo</p>
+      </a>
+
+      <div class="card coming-soon">
+        <span class="icon">📅</span>
+        <h3>Promociones</h3>
+        <p class="subtitle">Mes y temporada</p>
+        <span class="badge">Próximamente</span>
+      </div>
+
+      <div class="card coming-soon">
+        <span class="icon">💎</span>
+        <h3>Joyería y accesorios</h3>
+        <p class="subtitle">Regalos adicionales</p>
+        <span class="badge">Próximamente</span>
+      </div>
+
+      <div class="card coming-soon">
+        <span class="icon">🎁</span>
+        <h3>Combos especiales</h3>
+        <p class="subtitle">Regalos completos</p>
+        <span class="badge">Próximamente</span>
+      </div>
+    </div>
+
+    <!-- Filosofía -->
+    <div class="section">
+      <div class="section-title">Filosofía Empresarial de Eternal Roses</div>
+      <p class="philosophy">“Cultivamos emociones, florecemos recuerdos.”</p>
+    </div>
+
+    <!-- Cuidados de tus flores (expandible) -->
+    <div class="section">
+      <div class="section-title">Cuidados de tus flores 🌷</div>
+      
+      <p class="care-preview">
+        Flores de primera calidad, detalles que perduran. En Eternal Roses seleccionamos cuidadosamente flores frescas de primera calidad para crear arreglos que transmitan emociones y acompañen tus momentos más especiales.
+      </p>
+
+      <button class="care-toggle" id="careToggle" onclick="toggleCare()">
+        💐 Ver guía completa de cuidados
+      </button>
+
+      <div class="care-full" id="careFull">
+        <p>
+          Cada ramo es elaborado con dedicación, cuidando cada detalle para ofrecerte belleza, frescura y calidad. Queremos que disfrutes de tus flores durante el mayor tiempo posible, por eso incluimos un sobre de alimento floral y te compartimos algunas recomendaciones para mantenerlas hermosas.
+        </p>
+
+        <h3>Guía para cuidar tus flores 💐</h3>
+
+        <ol>
+          <li>
+            <strong>Retira o conserva el envoltorio</strong><br>
+            Puedes dejar el papel decorativo de tu ramo o retirarlo, según tu preferencia. Sin embargo, al quitarlo y dejar las flores más sueltas, tendrán mayor espacio para abrirse naturalmente y lucir todo su esplendor.
+          </li>
+          <li>
+            <strong>Utiliza el alimento floral</strong><br>
+            Tu ramo incluye un sobre de alimento floral que ayuda a conservar la frescura de las flores. Divide el contenido en cuatro partes iguales, ya que está diseñado para utilizarse en cuatro cambios de agua. Agrega una porción al agua limpia de tu florero en cada cambio.
+          </li>
+          <li>
+            <strong>Cambia el agua cada 3 días</strong><br>
+            Para mantener tus flores frescas, cambia el agua del florero cada tres días. Recuerda lavar el recipiente antes de colocar agua nueva y agregar la porción correspondiente de alimento floral.
+          </li>
+          <li>
+            <strong>Corta los tallos en cada cambio de agua</strong><br>
+            Cada vez que cambies el agua, corta aproximadamente 3 centímetros de la parte inferior de cada tallo, preferiblemente en diagonal y utilizando unas tijeras o herramienta limpia y afilada. Esto facilitará la absorción del agua y ayudará a mantener tus flores hidratadas.
+          </li>
+          <li>
+            <strong>Evita el sol directo y el calor</strong><br>
+            Coloca tu ramo en un lugar fresco, ventilado y alejado de la luz solar directa, fuentes de calor y corrientes fuertes de aire. Las temperaturas elevadas pueden acelerar el marchitamiento.
+          </li>
+          <li>
+            <strong>Retira las hojas que estén dentro del agua</strong><br>
+            Evita que las hojas queden sumergidas en el florero, ya que pueden descomponerse y favorecer la aparición de bacterias que afectan la conservación de tus flores.
+          </li>
+          <li>
+            <strong>Retira las flores marchitas</strong><br>
+            Si alguna flor comienza a marchitarse, retírala cuidadosamente para mantener el arreglo limpio y permitir que las demás continúen luciendo hermosas.
+          </li>
+        </ol>
+
+        <p class="care-closing">
+          Un detalle especial merece un cuidado especial. 🌸<br>
+          En Eternal Roses queremos que cada flor siga transmitiendo el cariño con el que fue elegida.<br>
+          Cuida tus flores, prolonga su belleza y disfruta cada momento.
+        </p>
+      </div>
+    </div>
+
+    <div class="footer">
+      <p><strong>Eternal Roses</strong></p>
+      <p>Detalles que florecen para siempre</p>
+    </div>
+  </div>
+
+  <a href="https://wa.me/50494221224?text=Hola%2C%20quiero%20información%20sobre%20los%20arreglos%20florales" 
+     class="whatsapp-float" target="_blank" rel="noopener" title="Escribir por WhatsApp">💬</a>
+
+  <script>
+    function toggleCare() {
+      const full = document.getElementById('careFull');
+      const btn = document.getElementById('careToggle');
+      full.classList.toggle('open');
+      if (full.classList.contains('open')) {
+        btn.textContent = '▲ Ocultar guía de cuidados';
+      } else {
+        btn.textContent = '💐 Ver guía completa de cuidados';
+      }
+    }
+  </script>
+</body>
+</html>
