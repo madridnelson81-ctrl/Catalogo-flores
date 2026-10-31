@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Eternals Roses — Catálogo de Joyería</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      background: #f7f4f0;
+      color: #2c2c2c;
+      line-height: 1.5;
+    }
+    .top-bar {
+      background: #fff;
+      border-bottom: 1px solid #eee;
+      padding: 12px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 1px 8px rgba(0,0,0,0.04);
+    }
+    .top-bar a {
+      text-decoration: none;
+      color: #c2185b;
+      font-size: 14px;
+      font-weight: 500;
+    }
+    .top-bar .logo-mini {
+      height: 36px;
+      mix-blend-mode: multiply;
+    }
+    .hero {
+      text-align: center;
+      padding: 28px 20px 18px;
+      background: linear-gradient(180deg, #fff 0%, #f7f4f0 100%);
+    }
+    .hero img.logo {
+      width: min(260px, 70vw);
+      height: auto;
+      mix-blend-mode: multiply;
+      margin-bottom: 6px;
+    }
+    .hero h1 {
+      font-size: 13px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: #c2185b;
+      font-weight: 600;
+      margin-top: 6px;
+    }
+    .hero p { font-size: 14px; color: #777; margin-top: 4px; }
+    .note {
+      max-width: 420px;
+      margin: 0 auto 18px;
+      padding: 10px 14px;
+      background: #fff5f7;
+      border: 1px solid #f8bbd0;
+      border-radius: 12px;
+      font-size: 13px;
+      color: #c2185b;
+      text-align: center;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      gap: 12px;
+      max-width: 1100px;
+      margin: 0 auto 40px;
+      padding: 0 12px;
+    }
+    @media (min-width: 500px) {
+      .grid { grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 16px; }
+    }
+    @media (min-width: 800px) {
+      .grid { grid-template-columns: repeat(4, 1fr); gap: 18px; }
+    }
+    .card {
+      background: #fff;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+      display: flex;
+      flex-direction: column;
+    }
+    .card-img {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+      background: #f0e8ec;
+      display: block;
+    }
+    .card-body {
+      padding: 10px 10px 12px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+    }
+    .card-body h3 {
+      font-size: 13px;
+      font-weight: 600;
+      color: #222;
+      margin-bottom: 4px;
+    }
+    .price-private {
+      font-size: 13px;
+      font-weight: 700;
+      color: #c2185b;
+      margin-bottom: 8px;
+      background: #fff5f7;
+      padding: 4px 8px;
+      border-radius: 8px;
+    }
+    .btn {
+      display: block;
+      text-align: center;
+      background: #e91e63;
+      color: #fff;
+      text-decoration: none;
+      padding: 8px 10px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 600;
+      margin-top: auto;
+    }
+    footer {
+      background: #2c2c2c;
+      color: #fff;
+      text-align: center;
+      padding: 28px 16px;
+    }
+    footer h3 { font-size: 16px; margin-bottom: 8px; }
+    footer p { font-size: 13px; color: #bbb; margin: 4px 0; }
+    footer .tagline { font-style: italic; color: #999; margin-top: 12px; }
+    .whatsapp {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 54px;
+      height: 54px;
+      background: #25D366;
+      color: #fff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 26px;
+      text-decoration: none;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.25);
+      z-index: 99;
+    }
+  </style>
+</head>
+<body>
+  <div class="top-bar">
+    <a href="index.html">← Inicio</a>
+    <img src="logo..jpg" alt="Eternals Roses" class="logo-mini" onerror="this.style.display='none'">
+    <a href="https://wa.me/50494221224" target="_blank">WhatsApp</a>
+  </div>
+
+  <div class="hero">
+    <img src="logo..jpg" alt="Eternals Roses" class="logo" onerror="this.style.display='none'">
+    <h1>Catálogo de Joyería</h1>
+    <p>Accesorios y piezas especiales · Comayagua, Honduras</p>
+  </div>
+
+  <p class="note">
+    💎 Todas las piezas tienen <strong>precio al privado</strong>.<br>
+    Consulta por WhatsApp la disponibilidad y el valor.
+  </p>
+
+  <div class="grid" id="grid"></div>
+
+  <footer>
+    <h3>Eternals Roses</h3>
+    <p>📍 Comayagua, Honduras</p>
+    <p>📱 WhatsApp: +504 9422-1224</p>
+    <p class="tagline">Detalles que florecen para siempre</p>
+  </footer>
+
+  <a class="whatsapp" href="https://wa.me/50494221224?text=Hola%2C%20quiero%20información%20sobre%20joyería" target="_blank">💬</a>
+
+  <script>
+    const items = [{"folder": "joyeria", "file": "066543c9-32cc-4b81-8df0-46e8f929cd78.JPG", "n": 1}, {"folder": "joyeria", "file": "11729aee-3d60-4f5c-b549-f45a924ca11a.JPG", "n": 2}, {"folder": "joyeria", "file": "173860c0-176a-4da5-ac84-055bc442fa5f.JPG", "n": 3}, {"folder": "joyeria", "file": "2555352b-bce8-492b-9fde-3b6897fa1a69.JPG", "n": 4}, {"folder": "joyeria", "file": "28774aee-bb27-4b25-98e0-81f5c22f745b.JPG", "n": 5}, {"folder": "joyeria", "file": "3215af1a-89eb-41d9-a0d5-606aa3963a67.JPG", "n": 6}, {"folder": "joyeria", "file": "34306126-6536-4e4a-9854-7e7262b26baf.JPG", "n": 7}, {"folder": "joyeria", "file": "37483bc0-ceb4-43ef-9ae5-b31504814bd9.JPG", "n": 8}, {"folder": "joyeria", "file": "3996ab73-52cd-4a32-8c19-71dbeb6d588c.JPG", "n": 9}, {"folder": "joyeria", "file": "4513e462-674a-4b08-9c2b-96fb88d0b2e3.JPG", "n": 10}, {"folder": "joyeria", "file": "45210682-4a5b-4e09-bc6b-84fdc9e9bcd8.JPG", "n": 11}, {"folder": "joyeria", "file": "5206943c-6635-4cf5-93e3-5ea232d4ced4.JPG", "n": 12}, {"folder": "joyeria", "file": "60141511-0f8f-47f0-947d-93838aa734f7.JPG", "n": 13}, {"folder": "joyeria", "file": "7664351a-b8c1-4160-a31d-c3ee5ef53130.JPG", "n": 14}, {"folder": "joyeria", "file": "78820c19-a6b4-4205-a81c-4f23fa5f9e35.JPG", "n": 15}, {"folder": "joyeria", "file": "79461812-f2f9-4f9a-b0e7-048bd6edb61c.JPG", "n": 16}, {"folder": "joyeria", "file": "8571f253-afb5-4b81-93b6-5938ba9f959d.JPG", "n": 17}, {"folder": "joyeria", "file": "914fa9ad-a379-49a1-a9ff-cfb13138a4c6.JPG", "n": 18}, {"folder": "joyeria", "file": "917f0e56-9c25-4505-8487-c05fae786444.JPG", "n": 19}, {"folder": "joyeria", "file": "9543c440-678d-40f1-8be5-827291d04a94.JPG", "n": 20}, {"folder": "joyeria", "file": "978a32c8-a440-44db-aa63-1f4e3cbcbe9e.JPG", "n": 21}, {"folder": "joyeria", "file": "a02d7725-0881-455e-ba90-43a8a2ea63d9.JPG", "n": 22}, {"folder": "joyeria", "file": "ac9303ec-1d3f-4355-bd10-4070dbea049f.JPG", "n": 23}, {"folder": "joyeria", "file": "afb1e8c1-019b-419a-b5e7-2b30d456b046.JPG", "n": 24}, {"folder": "joyeria", "file": "b59e0bc0-1366-4b5c-a45a-04286b2dca36.JPG", "n": 25}, {"folder": "joyeria", "file": "ba259af1-6d2b-4fcd-af23-f219c7cddacc.JPG", "n": 26}, {"folder": "joyeria", "file": "c1e35a13-62b3-46b1-8a11-ff84d6f8603f.JPG", "n": 27}, {"folder": "joyeria", "file": "c225ce39-b593-48a4-a9ac-4022167a1ed1.JPG", "n": 28}, {"folder": "joyeria", "file": "c5d5707d-dfe7-4883-ba9b-cd8ac94091bc.JPG", "n": 29}, {"folder": "joyeria", "file": "c79fcb7e-d2cc-4e6c-ae98-32394bf6bef6.JPG", "n": 30}, {"folder": "joyeria", "file": "c9c87628-dda9-49ef-af74-320892838137.JPG", "n": 31}, {"folder": "joyeria", "file": "ccc365e9-64c1-49ca-b3ce-44996063c272.JPG", "n": 32}, {"folder": "joyeria", "file": "d00e0df1-0a73-4d8d-81cb-1b0232892380.JPG", "n": 33}, {"folder": "joyeria", "file": "d31ca1f3-c3a7-4104-8c91-257463fa84af.JPG", "n": 34}, {"folder": "joyeria", "file": "d477f9cd-39a1-47cd-aaa0-6321282d1bc3.JPG", "n": 35}, {"folder": "joyeria", "file": "dc84d824-1c06-45bc-9aff-e373d7c7a814.JPG", "n": 36}, {"folder": "joyeria", "file": "e1e44f7c-af14-41d0-b90a-78e483c40211.JPG", "n": 37}, {"folder": "joyeria", "file": "e39059c0-8986-4168-b767-700bbe011e1f.JPG", "n": 38}, {"folder": "joyeria", "file": "e4045bcf-c727-409e-801a-160a540c8565.JPG", "n": 39}, {"folder": "joyeria", "file": "ecc5fc30-aaab-48cc-9c03-34d08a770a07.JPG", "n": 40}, {"folder": "joyeria", "file": "ef1d86d0-1486-459d-b3e2-b0e6e03b0ee1.JPG", "n": 41}, {"folder": "joyeria", "file": "f15436fb-800e-43bc-8e99-1a0b8d179662.JPG", "n": 42}, {"folder": "joyeria", "file": "f48ebe2c-3192-4345-aea6-a2b95e59f8ed.JPG", "n": 43}, {"folder": "joyeria", "file": "f530ed69-43b7-436b-8c32-ca87d2abd1ba.JPG", "n": 44}, {"folder": "joyeria", "file": "f6893b51-e935-4bbc-96f7-8f0f53f1217b.JPG", "n": 45}, {"folder": "joyeria", "file": "f69d32ee-6353-47dc-8d9d-754f904b17f6.JPG", "n": 46}, {"folder": "joyeria", "file": "f6f212e7-af90-485a-aec0-4639df7ae95c.JPG", "n": 47}, {"folder": "joyeria", "file": "f8c6d390-d55e-492a-88ba-375b2ce90e44.JPG", "n": 48}, {"folder": "joyeria", "file": "f8cd437a-8c3c-4e4d-9b98-e126b6bbc486.JPG", "n": 49}, {"folder": "joyeria", "file": "fb7ff564-452a-413c-be82-a957dfd54385.JPG", "n": 50}, {"folder": "joyeria", "file": "fe2773ff-3bee-473b-956d-5f0adf62caf4.JPG", "n": 51}, {"folder": "Joyeria 2", "file": "00c3b969-efdf-4f1c-b213-438189be3d56.JPG", "n": 52}, {"folder": "Joyeria 2", "file": "04dd84fb-2311-454f-9cde-6262836d3a6e.JPG", "n": 53}, {"folder": "Joyeria 2", "file": "08def170-0f92-43a8-bc16-64bf720361c7.JPG", "n": 54}, {"folder": "Joyeria 2", "file": "08edaaf7-24b4-4011-ad2a-b419a911cbf3.JPG", "n": 55}, {"folder": "Joyeria 2", "file": "0aac8ced-9e87-486a-b093-594f4eb419c8.JPG", "n": 56}, {"folder": "Joyeria 2", "file": "0f08d60f-8dc6-4c2f-ab76-8d731714b6fa.JPG", "n": 57}, {"folder": "Joyeria 2", "file": "0fea675d-8cf4-480e-af3c-ff6e10743d5d.JPG", "n": 58}, {"folder": "Joyeria 2", "file": "19d7c04e-5d2e-4e44-b77e-7c45fe5735a7.JPG", "n": 59}, {"folder": "Joyeria 2", "file": "217c36c9-8320-42ae-a9fe-f1c95c718e95.JPG", "n": 60}, {"folder": "Joyeria 2", "file": "29b4737a-c466-4d52-aeda-b458bd7f769c.JPG", "n": 61}, {"folder": "Joyeria 2", "file": "29e97693-d1e0-4b36-b366-c44d82f75d80.JPG", "n": 62}, {"folder": "Joyeria 2", "file": "2d75f47e-bd7e-4b9b-8c3e-d99b836bc1f8.JPG", "n": 63}, {"folder": "Joyeria 2", "file": "2de08677-e62a-41d9-be86-74458134c4c2.JPG", "n": 64}, {"folder": "Joyeria 2", "file": "2fbac4b7-ce8d-49ca-934f-3d73d6262291.JPG", "n": 65}, {"folder": "Joyeria 2", "file": "3b15983e-b35b-46d9-9354-724cd5124325.JPG", "n": 66}, {"folder": "Joyeria 2", "file": "3d3660c4-4057-409d-acf1-033f811f1981.JPG", "n": 67}, {"folder": "Joyeria 2", "file": "3d52793f-afe2-48a4-a57f-5c7b7aaa2cbf.JPG", "n": 68}, {"folder": "Joyeria 2", "file": "424a3020-84e6-442f-b461-9483d0086815.JPG", "n": 69}, {"folder": "Joyeria 2", "file": "43d1b8aa-95b7-40f4-8df8-8f1df8cf5b6c.JPG", "n": 70}, {"folder": "Joyeria 2", "file": "46f404bf-0cef-4e15-aa10-f7b5942b55a4.JPG", "n": 71}, {"folder": "Joyeria 2", "file": "48e7f5fc-e014-4c3c-8e66-6d10a595b673.JPG", "n": 72}, {"folder": "Joyeria 2", "file": "492a1fc1-2196-4b96-b13d-cf00494cc81f.JPG", "n": 73}, {"folder": "Joyeria 2", "file": "4c9b928b-f5f4-4ac5-885f-f6c5adc02f6a.JPG", "n": 74}, {"folder": "Joyeria 2", "file": "4e0c4505-d520-4ca0-8b99-bb159ee0e70c.JPG", "n": 75}, {"folder": "Joyeria 2", "file": "4ee4a3e1-1290-4b7f-ae08-f6a54b8b4dc8.JPG", "n": 76}, {"folder": "Joyeria 2", "file": "522a1328-2551-4363-91a2-76bae539f46d.JPG", "n": 77}, {"folder": "Joyeria 2", "file": "529b39aa-7b80-42c0-a39c-3f64f20a0816.JPG", "n": 78}, {"folder": "Joyeria 2", "file": "539f2e2c-c830-4001-bb24-a211a2d30b16.JPG", "n": 79}, {"folder": "Joyeria 2", "file": "53d24519-d71c-4d3d-acb6-017ef14d0256.JPG", "n": 80}, {"folder": "Joyeria 2", "file": "53d5915b-9505-45a6-b895-1c6eecc2bb6d.JPG", "n": 81}, {"folder": "Joyeria 2", "file": "54c4b834-a77b-41d4-a634-b66b7f3a0c1c.JPG", "n": 82}, {"folder": "Joyeria 2", "file": "5a8605e9-b211-4872-8c92-234dbabcc523.JPG", "n": 83}, {"folder": "Joyeria 2", "file": "5c68d31c-d464-4c92-badd-ed8a8c22fb9f.JPG", "n": 84}, {"folder": "Joyeria 2", "file": "5d8dcc00-6bb2-42fa-87fc-a6ad319c5d8e.JPG", "n": 85}, {"folder": "Joyeria 2", "file": "5e9c8835-59cf-4cb0-a53c-5e3e8ce83570.JPG", "n": 86}, {"folder": "Joyeria 2", "file": "6a781ab3-1535-4faa-a422-b160df757977.JPG", "n": 87}, {"folder": "Joyeria 2", "file": "6fb91ed1-44ba-4ba7-8fcf-17babb54b921.JPG", "n": 88}, {"folder": "Joyeria 2", "file": "714e6faf-d9df-427d-bf13-f9f046f2de79.JPG", "n": 89}, {"folder": "Joyeria 2", "file": "7c9d78c5-5714-4f77-87a4-742605d88e5b.JPG", "n": 90}, {"folder": "Joyeria 2", "file": "7f83a9a1-1f2c-4d54-81d7-8cef0b03b400.JPG", "n": 91}, {"folder": "Joyeria 2", "file": "8ab9a0f7-87ff-49e3-bfaa-a47e96502b7c.JPG", "n": 92}, {"folder": "Joyeria 2", "file": "8da6022b-eeb7-4399-9cd3-e0b80ef46d91.JPG", "n": 93}, {"folder": "Joyeria 2", "file": "8fc74dfd-7aaa-4e7f-9f09-26e09b6ee8a2.JPG", "n": 94}, {"folder": "Joyeria 2", "file": "90dde2c1-4bde-4751-b7b5-f772c4d8d9de.JPG", "n": 95}, {"folder": "Joyeria 2", "file": "91c1bead-4bf0-40a0-ab1a-7e1c1792b2f0.JPG", "n": 96}, {"folder": "Joyeria 2", "file": "94dd0c81-5b4f-4140-90b6-0ee4f8e49530.JPG", "n": 97}, {"folder": "Joyeria 2", "file": "98ee05c2-9a6d-4758-9907-3f6324fc296d.JPG", "n": 98}, {"folder": "Joyeria 2", "file": "9a36adc8-10e2-4e57-aa35-fc41edf195c7.JPG", "n": 99}, {"folder": "Joyeria 2", "file": "9a891953-c0e8-4a1b-a72f-0fe07c044dd6.JPG", "n": 100}, {"folder": "Joyeria 2", "file": "9b0b2e2a-b71a-424c-944c-8fdf20920e87.JPG", "n": 101}, {"folder": "Joyeria 2", "file": "9be80f9f-5a12-45fd-b055-e6d0471c559e.JPG", "n": 102}];
+    const grid = document.getElementById('grid');
+    items.forEach(item => {
+      const folderEnc = encodeURIComponent(item.folder);
+      const fileEnc = encodeURIComponent(item.file);
+      const src = 'https://raw.githubusercontent.com/madridnelson81-ctrl/Catalogo-flores/main/' + folderEnc + '/' + fileEnc;
+      const card = document.createElement('div');
+      card.className = 'card';
+      card.innerHTML = `
+        <img class="card-img" src="${src}" alt="Joyería" loading="lazy">
+        <div class="card-body">
+          <div class="price-private">Precio al privado</div>
+          <a class="btn" href="https://wa.me/50494221224?text=Hola%2C%20quiero%20información%20sobre%20esta%20pieza%20de%20joyería" target="_blank">Consultar por WhatsApp</a>
+        </div>
+      `;
+      grid.appendChild(card);
+    });
+  </script>
+</body>
+</html>
