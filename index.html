@@ -307,7 +307,51 @@
       font-size: 0.9rem;
       line-height: 1.5;
     }
+  
+    /* ===== Estilo rosa + letra cursiva ===== */
+    body { font-family: 'Dancing Script','Segoe Script','Brush Script MT',cursive; font-size: 19px; }
+    .header {
+      background: linear-gradient(180deg, #d38d98 0%, #c47885 100%);
+      border-radius: 0 0 34px 34px;
+      padding: 30px 18px 34px;
+      margin: -20px -16px 24px;
+      box-shadow: 0 12px 30px rgba(180, 90, 107, .35);
+    }
+    .logo {
+      mix-blend-mode: normal;
+      border-radius: 18px;
+      box-shadow: 0 8px 24px rgba(0,0,0,.28);
+      margin-bottom: 12px;
+    }
+    .slogan {
+      font-family: 'Great Vibes','Segoe Script','Brush Script MT',cursive;
+      font-size: 2.5rem;
+      font-weight: 400;
+      line-height: 1.1;
+      color: #fff;
+    }
+    .location { color: rgba(255,255,255,.92); font-size: 1.1rem; }
+    .btn-catalogo { font-size: 1.4rem; font-weight: 700; }
+    .tile-img {
+      width: 100%; height: 130px; object-fit: cover; display: block;
+      border-radius: 14px; margin-bottom: 10px;
+      box-shadow: 0 4px 14px rgba(196, 114, 127, .35);
+    }
+    .card { padding: 12px 12px 16px; }
+    .card h3 { font-size: 1.3rem; font-weight: 700; }
+    .card .subtitle { font-size: 1.05rem; }
+    .section-title { font-size: 1.2rem; letter-spacing: .5px; text-transform: none; font-weight: 700; }
+    .section p, .care-preview, .care-full p, .care-full li { font-size: 1.1rem !important; text-align: left; }
+    .philosophy { font-size: 1.7rem; }
+    .section h2, .care-full h3 { font-size: 1.4rem; }
+    .care-toggle { font-family: inherit; font-size: 1.2rem; font-weight: 700; }
+    .care-closing { font-size: 1.15rem !important; text-align: center !important; }
+    .footer { font-size: 1.05rem; }
+    .whatsapp-float svg { display: block; }
+
   </style>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500;600;700&family=Great+Vibes&display=swap" rel="stylesheet">
 </head>
 <body>
   <div class="container">
@@ -315,23 +359,23 @@
     <div class="header">
       <img src="logo..jpg" alt="Eternals Roses by Jade Banegas" class="logo">
       <p class="slogan">Detalles que florecen para siempre</p>
-      <div class="location">📍 Comayagua, Honduras</div>
+      <div class="location">Comayagua, Honduras</div>
     </div>
 
-    <a href="catalago.html" class="btn-catalogo">
-      🌸 Ver catálogo completo de ramos
+    <a href="catalogo.html" class="btn-catalogo">
+      Ver catálogo completo de ramos
     </a>
 
     <div class="grid">
-      <a href="catalago.html" class="card active">
-        <span class="icon">🌸</span>
+      <a href="catalogo.html" class="card active">
+        <img class="tile-img" src="Ramo%20de%20tulipanes%20y%20rosas..JPG" alt="Ramos y flores">
         <h3>Ramos y flores</h3>
         <p class="subtitle">Básico a lujo</p>
       </a>
 
 
       <a href="joyeria.html" class="card active" style="text-decoration:none;color:inherit;">
-        <span class="icon">💎</span>
+        <img class="tile-img" src="anillos.jpeg" alt="Joyería y accesorios">
         <h3>Joyería y accesorios</h3>
         <p class="subtitle">Regalos adicionales</p>
       </a>
@@ -340,7 +384,7 @@
 
     <!-- Envíos -->
     <div class="section">
-      <div class="section-title">Envíos y entrega 🚚</div>
+      <div class="section-title">Envíos y entrega</div>
       <p style="font-size: 0.95rem; color: #444; text-align: center; line-height: 1.6;">
         Realizamos <strong>envíos a domicilio</strong> y puntos de entrega coordinados en el municipio de <strong>Comayagua</strong> y zonas aledañas.
       </p>
@@ -357,14 +401,14 @@
 
     <!-- Cuidados de tus flores (expandible) -->
     <div class="section">
-      <div class="section-title">Cuidados de tus flores 🌷</div>
+      <div class="section-title">Cuidados de tus flores</div>
       
       <p class="care-preview">
         Flores de primera calidad, detalles que perduran. En Eternal Roses seleccionamos cuidadosamente flores frescas de primera calidad para crear arreglos que transmitan emociones y acompañen tus momentos más especiales.
       </p>
 
       <button class="care-toggle" id="careToggle" onclick="toggleCare()">
-        💐 Ver guía completa de cuidados
+        Ver guía completa de cuidados
       </button>
 
       <div class="care-full" id="careFull">
@@ -372,7 +416,7 @@
           Cada ramo es elaborado con dedicación, cuidando cada detalle para ofrecerte belleza, frescura y calidad. Queremos que disfrutes de tus flores durante el mayor tiempo posible, por eso incluimos un sobre de alimento floral y te compartimos algunas recomendaciones para mantenerlas hermosas.
         </p>
 
-        <h3>Guía para cuidar tus flores 💐</h3>
+        <h3>Guía para cuidar tus flores</h3>
 
         <ol>
           <li>
@@ -406,7 +450,7 @@
         </ol>
 
         <p class="care-closing">
-          Un detalle especial merece un cuidado especial. 🌸<br>
+          Un detalle especial merece un cuidado especial.<br>
           En Eternal Roses queremos que cada flor siga transmitiendo el cariño con el que fue elegida.<br>
           Cuida tus flores, prolonga su belleza y disfruta cada momento.
         </p>
@@ -420,7 +464,7 @@
   </div>
 
   <a href="https://wa.me/50494221224?text=Hola%2C%20quiero%20información%20sobre%20los%20arreglos%20florales" 
-     class="whatsapp-float" target="_blank" rel="noopener" title="Escribir por WhatsApp">💬</a>
+     class="whatsapp-float" target="_blank" rel="noopener" title="Escribir por WhatsApp" aria-label="WhatsApp"><svg viewBox="0 0 24 24" width="30" height="30" fill="#fff" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.5l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.8 11.9 11.9 0 0 0 4.6 4.1c1.7.7 2.4.8 3.2.7a2.7 2.7 0 0 0 1.8-1.3 2.2 2.2 0 0 0 .2-1.3c-.1-.1-.2-.2-.5-.3z"/></svg></a>
 
   <script>
     function toggleCare() {
@@ -428,11 +472,11 @@
       const btn = document.getElementById('careToggle');
       full.classList.toggle('open');
       if (full.classList.contains('open')) {
-        btn.textContent = '▲ Ocultar guía de cuidados';
+        btn.textContent = 'Ocultar guía de cuidados';
       } else {
-        btn.textContent = '💐 Ver guía completa de cuidados';
+        btn.textContent = 'Ver guía completa de cuidados';
       }
     }
   </script>
-</body><script src="mejoras.js"></script>
+</body>
 </html>
