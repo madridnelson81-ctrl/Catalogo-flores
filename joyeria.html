@@ -251,25 +251,6 @@
       btn.textContent = 'Consultar por WhatsApp';
       btn.href = 'https://wa.me/50494221224?text=' + encodeURIComponent(texto);
 
-      // En celulares: comparte la foto real de la pieza, sin mostrar ningún enlace
-      btn.addEventListener('click', async (e) => {
-        e.preventDefault();
-        try {
-          if (navigator.canShare && navigator.share) {
-            const resp = await fetch(src);
-            if (!resp.ok) throw new Error('foto');
-            const blob = await resp.blob();
-            const file = new File([blob], 'pieza-joyeria.jpg', { type: blob.type || 'image/jpeg' });
-            if (navigator.canShare({ files: [file] })) {
-              await navigator.share({ files: [file], text: texto });
-              return;
-            }
-          }
-        } catch (err) {
-          if (err && err.name === 'AbortError') return; // la persona canceló
-        }
-        window.open(btn.href, '_blank', 'noopener');
-      });
 
       body.appendChild(btn);
       card.appendChild(img);
