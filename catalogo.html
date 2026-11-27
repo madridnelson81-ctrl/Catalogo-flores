@@ -1,851 +1,133 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Eternals Roses - Catálogo de Ramos</title>
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ramos y flores | Eternals Roses</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Neuton:ital,wght@0,300;0,400;0,700;0,800;1,400&display=swap" rel="stylesheet">
+<style>
+:root{--vino:#5b2a3d;--malva:#b5708b;--malva2:#c98aa3;--crema:#f5ede6;--taupe:#d8c7b8;--taupe2:#c4ae9b;--txt:#4a2a36}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth}
+body{font-family:'Neuton',Georgia,'Times New Roman',serif;font-size:19px;line-height:1.45;color:var(--txt);background:var(--crema);min-height:100vh}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit}
+img{display:block;max-width:100%}
+.wrap{max-width:560px;margin:0 auto;padding:0 16px}
+.wa-float{position:fixed;right:18px;bottom:20px;width:56px;height:56px;border-radius:50%;background:#25D366;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 18px rgba(0,0,0,.28);z-index:50}
+.wa-float svg{display:block}
 
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background-color: #f4f2ee;
-            position: relative;
-        }
-
-        body::before {
-            content: "";
-            position: fixed;
-            inset: 0;
-            z-index: -1;
-            background: url("fondo..jpg") center/cover no-repeat;
-            opacity: 0.65;
-        }
-
-        header {
-            background: linear-gradient(rgba(255,255,255,.45), rgba(255,255,255,0));
-            padding: 18px 16px 24px;
-            text-align: center;
-            border-bottom: 1px solid rgba(194,24,91,.2);
-        }
-
-        .logo {
-            width: min(380px, 85vw);
-            height: auto;
-            mix-blend-mode: multiply;
-            display: block;
-            margin: 0 auto 4px;
-        }
-
-        header p { font-size: 14px; color: #666; }
-        header .location { font-size: 12px; color: #999; }
-
-        nav {
-            background: rgba(255,255,255,.92);
-            backdrop-filter: blur(6px);
-            padding: 12px 16px;
-            text-align: center;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.07);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-
-        nav a {
-            margin: 0 10px;
-            text-decoration: none;
-            color: #333;
-            font-weight: 500;
-            font-size: 13px;
-        }
-        nav a:hover { color: #e91e63; }
-
-        section {
-            max-width: 1100px;
-            margin: 35px auto;
-            padding: 0 14px;
-        }
-
-        section h2 {
-            text-align: center;
-            font-size: 28px;
-            margin-bottom: 24px;
-            color: #c2185b;
-            font-weight: 300;
-        }
-
-        .tier-nav {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 8px;
-            margin: -8px 0 30px;
-        }
-
-        .chip {
-            text-decoration: none;
-            padding: 8px 14px;
-            border-radius: 25px;
-            font-weight: 600;
-            font-size: 13px;
-            color: #fff;
-        }
-        .chip small { font-weight: 400; opacity: .9; margin-left: 2px; }
-        .chip-basico { background: #e58aab; }
-        .chip-clasico { background: #d4568a; }
-        .chip-premium { background: #b0245f; }
-        .chip-lujo { background: #6e1238; }
-
-        .tier { margin-bottom: 45px; scroll-margin-top: 65px; }
-
-        .tier-header {
-            text-align: center;
-            margin-bottom: 22px;
-            padding: 18px 14px;
-            border-radius: 12px;
-            color: #fff;
-        }
-        .tier-header h3 {
-            font-size: 24px;
-            font-weight: 500;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-        }
-        .tier-header .tier-range {
-            display: inline-block;
-            margin-top: 3px;
-            font-size: 14px;
-            font-weight: 600;
-            background: rgba(255,255,255,.22);
-            padding: 2px 11px;
-            border-radius: 20px;
-        }
-        .tier-header p { margin-top: 6px; font-size: 12px; opacity: .95; }
-
-        .tier-basico .tier-header { background: linear-gradient(135deg,#f1a9c3,#e58aab); }
-        .tier-clasico .tier-header { background: linear-gradient(135deg,#e0699a,#d4568a); }
-        .tier-premium .tier-header { background: linear-gradient(135deg,#c13472,#b0245f); }
-        .tier-lujo .tier-header { background: linear-gradient(135deg,#8a1c4b,#6e1238); }
-
-        .gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-        }
-
-        .product-card {
-            background: rgba(255,255,255,0.96);
-            border-radius: 14px;
-            overflow: hidden;
-            box-shadow: 0 4px 14px rgba(0,0,0,0.08);
-            transition: transform 0.25s, box-shadow 0.25s;
-            text-align: center;
-        }
-        .product-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 22px rgba(0,0,0,0.12);
-        }
-
-        .product-image {
-            width: 100%;
-            height: 230px;
-            object-fit: cover;
-            display: block;
-            background: #f3e3ea;
-        }
-
-        .product-info {
-            padding: 14px 12px 18px;
-        }
-        .product-info h3 {
-            font-size: 15px;
-            margin-bottom: 4px;
-            color: #333;
-            font-weight: 500;
-        }
-        .product-info p {
-            font-size: 12px;
-            color: #666;
-            margin-bottom: 4px;
-        }
-        .price {
-            font-size: 17px;
-            font-weight: bold;
-            color: #c2185b;
-            margin: 6px 0;
-        }
-        .product-tag {
-            display: inline-block;
-            background-color: #f8bbd0;
-            color: #c2185b;
-            padding: 3px 9px;
-            border-radius: 20px;
-            font-size: 10px;
-            margin-top: 4px;
-        }
-        .button {
-            display: inline-block;
-            background-color: #e91e63;
-            color: #fff;
-            padding: 8px 16px;
-            border-radius: 25px;
-            text-decoration: none;
-            margin-top: 8px;
-            font-size: 12px;
-            font-weight: 500;
-        }
-        .button:hover { background-color: #c2185b; }
-
-        .sizes {
-            list-style: none;
-            margin: 8px 0 10px;
-            padding: 0;
-        }
-        .sizes li {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 6px 10px;
-            background: #fff5f7;
-            border-radius: 8px;
-            margin-bottom: 5px;
-            font-size: 13px;
-        }
-        .sizes strong {
-            color: #c2185b;
-        }
-        .size-buttons {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 6px;
-            justify-content: center;
-            margin-top: 6px;
-        }
-        .size-buttons .button {
-            margin-top: 0;
-            padding: 7px 12px;
-            font-size: 11px;
-        }
-
-        footer {
-            background-color: #333;
-            color: #fff;
-            padding: 30px 16px;
-            text-align: center;
-            margin-top: 40px;
-        }
-        footer h3 { margin-bottom: 10px; font-size: 17px; }
-        .contact-info { margin: 12px 0; font-size: 13px; line-height: 1.7; }
-        .tagline { font-style: italic; color: #bbb; margin-top: 14px; font-size: 14px; }
-
-        .whatsapp-float {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background-color: #25D366;
-            color: white;
-            width: 54px;
-            height: 54px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 26px;
-            box-shadow: 0 4px 14px rgba(0,0,0,0.3);
-            z-index: 1000;
-            text-decoration: none;
-        }
-
-        .back-home {
-            display: inline-block;
-            margin: 18px auto;
-            background: #c2185b;
-            color: white;
-            padding: 9px 20px;
-            border-radius: 25px;
-            text-decoration: none;
-            font-size: 13px;
-            font-weight: 500;
-        }
-
-        @media (max-width: 600px) {
-            .gallery { grid-template-columns: 1fr; }
-            section h2 { font-size: 24px; }
-        }
-    
-        /* ===== Estilo rosa + letra cursiva ===== */
-        body { font-family: 'Dancing Script','Segoe Script','Brush Script MT',cursive; font-size: 19px; }
-        header {
-            background: linear-gradient(180deg, #d38d98 0%, #c47885 100%);
-            border-bottom: none;
-            border-radius: 0 0 34px 34px;
-            padding: 26px 16px 30px;
-            box-shadow: 0 12px 30px rgba(180, 90, 107, .35);
-        }
-        .logo { mix-blend-mode: normal; border-radius: 18px; box-shadow: 0 8px 24px rgba(0,0,0,.28); margin-bottom: 12px; }
-        header p { font-family: 'Great Vibes','Segoe Script','Brush Script MT',cursive; font-size: 2.3rem; line-height: 1.1; color: #fff; }
-        header .location { font-family: inherit; font-size: 1.1rem; color: rgba(255,255,255,.92); }
-        nav a { font-size: 1.2rem; font-weight: 600; }
-        section h2 { font-family: 'Great Vibes','Segoe Script','Brush Script MT',cursive; font-size: 2.8rem; font-weight: 400; }
-        .chip { font-size: 1.1rem; font-weight: 700; }
-        .chip small { font-size: .95rem; }
-        .tier-header h3 { font-family: 'Great Vibes','Segoe Script','Brush Script MT',cursive; font-size: 2.4rem; font-weight: 400; letter-spacing: 1px; text-transform: none; }
-        .tier-header .tier-range { font-size: 1.2rem; }
-        .tier-header p { font-size: 1.1rem; }
-        .product-info h3 { font-size: 1.35rem; font-weight: 700; }
-        .product-info p { font-size: 1.1rem; }
-        .price { font-size: 1.5rem; }
-        .product-tag { font-size: .95rem; }
-        .button { font-family: inherit; font-size: 1.1rem; font-weight: 700; }
-        .sizes li { font-size: 1.15rem; }
-        .size-buttons .button { font-size: 1.05rem; }
-        footer h3 { font-size: 1.6rem; }
-        .contact-info { font-size: 1.15rem; }
-        .tagline { font-size: 1.35rem; }
-        .back-home { font-size: 1.15rem; }
-        .whatsapp-float svg { display: block; }
-        @media (max-width: 600px) { section h2 { font-size: 2.4rem; } }
-
-  </style>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500;600;700&family=Great+Vibes&display=swap" rel="stylesheet">
+body.cat{background:linear-gradient(180deg,#cdb7a6 0%,#e4d6ca 45%,#f1e7de 100%) fixed}
+.topbar{position:sticky;top:0;z-index:20;background:rgba(245,237,230,.86);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid rgba(91,42,61,.08)}
+.topbar .in{max-width:560px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:8px 16px}
+.topbar a.back{font-size:1.05rem;color:var(--vino);font-weight:700}
+.topbar img{height:38px;width:auto;border-radius:8px}
+.topbar .sp{width:60px}
+.head{text-align:center;padding:26px 16px 8px}
+.head h1{font-weight:800;font-size:2.5rem;line-height:1;color:var(--vino);letter-spacing:-.01em}
+.head p{margin-top:8px;font-size:1.1rem;color:#7a5565;font-style:italic}
+.pills{position:sticky;top:55px;z-index:15;display:flex;gap:8px;overflow-x:auto;padding:10px 16px;max-width:560px;margin:0 auto;scrollbar-width:none}
+.pills::-webkit-scrollbar{display:none}
+.pills a{flex:none;padding:7px 16px;border-radius:999px;background:rgba(255,255,255,.55);border:1px solid rgba(91,42,61,.15);color:var(--vino);font-size:1.05rem;font-weight:700;backdrop-filter:blur(6px)}
+.sec{max-width:560px;margin:0 auto;padding:18px 16px 6px;scroll-margin-top:110px}
+.sec h2{font-size:1.9rem;font-weight:800;color:var(--vino);line-height:1.05}
+.sec p.sub{font-style:italic;color:#7a5565;font-size:1.05rem;margin:2px 0 12px}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.grid.g3{grid-template-columns:repeat(3,1fr);gap:8px}
+@media(min-width:620px){.wrap,.sec,.topbar .in,.pills{max-width:880px}.grid{grid-template-columns:repeat(3,1fr)}.grid.g3{grid-template-columns:repeat(4,1fr)}}
+.tile{position:relative;display:block;width:100%;aspect-ratio:3/4;border:1px solid rgba(255,255,255,.55);border-radius:20px;overflow:hidden;background:#b9a493;cursor:pointer;padding:0;box-shadow:0 8px 20px rgba(91,60,40,.18);text-align:left;color:#fff}
+.tile img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .35s}
+.tile:active img{transform:scale(1.04)}
+.tile::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(55,32,24,.62) 0%,rgba(55,32,24,.12) 40%,rgba(55,32,24,0) 60%,rgba(55,32,24,.25) 100%)}
+.tile .lbl{position:absolute;z-index:2;top:12px;left:12px;right:12px;font-size:.84rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;line-height:1.18;text-shadow:0 1px 6px rgba(0,0,0,.35)}
+.g3 .tile{border-radius:16px}
+.g3 .tile .lbl{top:9px;left:9px;font-size:.78rem}
+.tile .go{position:absolute;z-index:2;left:12px;bottom:12px;width:32px;height:32px;border-radius:50%;border:1px solid rgba(255,255,255,.8);background:rgba(255,255,255,.18);backdrop-filter:blur(4px);display:flex;align-items:center;justify-content:center}
+.g3 .tile .go{left:9px;bottom:9px;width:26px;height:26px}
+.g3 .tile .go svg{width:13px;height:13px}
+.note{max-width:560px;margin:4px auto 0;padding:0 24px;text-align:center;font-style:italic;color:#7a5565;font-size:1.1rem}
+footer{margin-top:36px;padding:30px 16px 90px;text-align:center;background:var(--vino);color:#f3dfe6}
+footer h3{font-size:1.6rem;font-weight:800;color:#fff}
+footer p{font-size:1.05rem;opacity:.9}
+footer .tag{margin-top:10px;font-style:italic;font-size:1.25rem;opacity:1;color:#fff}
+.back-home{display:block;text-align:center;margin:28px auto 0;color:var(--vino);font-weight:700;font-size:1.1rem}
+/* ventana ampliada */
+.lb{position:fixed;inset:0;z-index:100;display:none;align-items:center;justify-content:center;padding:14px;background:rgba(40,20,30,.78);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+.lb.open{display:flex}
+.sheet{position:relative;width:100%;max-width:440px;max-height:94vh;overflow:auto;background:var(--crema);border-radius:26px;box-shadow:0 24px 60px rgba(0,0,0,.45);animation:up .22s ease}
+@keyframes up{from{opacity:0;transform:translateY(14px) scale(.98)}to{opacity:1;transform:none}}
+.sheet .ph{position:relative;background:#241519}
+.sheet .ph img{width:100%;max-height:62vh;object-fit:contain;margin:0 auto}
+.sheet .x{position:absolute;z-index:3;top:10px;right:10px;width:38px;height:38px;border-radius:50%;border:0;background:rgba(255,255,255,.9);color:var(--vino);font-size:1.5rem;line-height:1;cursor:pointer;display:flex;align-items:center;justify-content:center}
+.sheet .nv{position:absolute;z-index:3;top:50%;transform:translateY(-50%);width:38px;height:38px;border-radius:50%;border:0;background:rgba(255,255,255,.85);color:var(--vino);cursor:pointer;display:flex;align-items:center;justify-content:center}
+.sheet .nv.p{left:10px}.sheet .nv.p svg{transform:rotate(180deg)}.sheet .nv.n{right:10px}
+.sheet .bd{padding:18px 20px 22px}
+.sheet .kicker{font-size:.9rem;letter-spacing:.14em;text-transform:uppercase;color:var(--malva);font-weight:700}
+.sheet h2{font-size:1.9rem;font-weight:800;line-height:1.05;color:var(--vino);margin:4px 0 6px}
+.sheet .ds{font-size:1.15rem;color:#6b4755;margin-bottom:14px}
+.sheet .opts{display:flex;flex-direction:column;gap:8px}
+.sheet .opts small{font-style:italic;color:#7a5565;font-size:1.02rem}
+.btnwa{display:flex;align-items:center;justify-content:center;gap:9px;width:100%;padding:13px 16px;border-radius:14px;background:var(--vino);color:#fff;font-size:1.2rem;font-weight:700;letter-spacing:.01em;box-shadow:0 6px 16px rgba(91,42,61,.3)}
+.btnwa svg{width:20px;height:20px;fill:#fff}
+.btnwa.alt{background:#fff;color:var(--vino);border:1.5px solid var(--vino);box-shadow:none}
+</style>
 </head>
-<body>
+<body class="cat">
+<div class="topbar"><div class="in"><a class="back" href="index.html">&larr; Inicio</a><img src="logo..jpg" alt="Eternals Roses" onerror="this.style.display='none'"><span class="sp"></span></div></div>
+<div class="head"><h1>Ramos y flores</h1><p>Toca un ramo para verlo en grande</p></div>
+<nav class="pills"><a href="#basico">Básico</a><a href="#clasico">Clásico</a><a href="#premium">Premium</a><a href="#lujo">Lujo</a></nav>
+<section class="sec" id="basico"><h2>Básico</h2><p class="sub">Detalles frescos y accesibles para sorprender.</p><div class="grid" data-tier="basico"></div></section>
+<section class="sec" id="clasico"><h2>Clásico</h2><p class="sub">Nuestros ramos favoritos para cualquier ocasión.</p><div class="grid" data-tier="clasico"></div></section>
+<section class="sec" id="premium"><h2>Premium</h2><p class="sub">Diseños elaborados con flores selectas.</p><div class="grid" data-tier="premium"></div></section>
+<section class="sec" id="lujo"><h2>Lujo</h2><p class="sub">Nuestras piezas más espectaculares.</p><div class="grid" data-tier="lujo"></div></section>
+<a class="back-home" href="index.html">&larr; Volver al inicio</a>
+<footer><h3>Eternals Roses</h3><p>Comayagua, Honduras</p><p>WhatsApp: +504 9422-1224</p><p class="tag">Detalles que florecen para siempre</p></footer>
+<div class="lb" id="lb" role="dialog" aria-modal="true"><div class="sheet">
+<div class="ph"><button class="x" onclick="cerrarLB()" aria-label="Cerrar">&times;</button>
+<button class="nv p" onclick="__lbNav(-1)" aria-label="Anterior"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button><button class="nv n" onclick="__lbNav(1)" aria-label="Siguiente"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+<img id="lbImg" src="" alt=""></div>
+<div class="bd"><div class="kicker" id="lbK"></div><h2 id="lbT"></h2><p class="ds" id="lbD"></p><div class="opts" id="lbO"></div></div></div></div>
+<a class="wa-float" href="https://wa.me/50494221224?text=Hola%2C%20quiero%20informaci%C3%B3n" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24" width="30" height="30" fill="#fff" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.5l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.8 11.9 11.9 0 0 0 4.6 4.1c1.7.7 2.4.8 3.2.7a2.7 2.7 0 0 0 1.8-1.3 2.2 2.2 0 0 0 .2-1.3c-.1-.1-.2-.2-.5-.3z"/></svg></a>
+<script>
+var WAICON="<svg viewBox=\"0 0 24 24\" width=\"30\" height=\"30\" fill=\"#fff\" aria-hidden=\"true\"><path d=\"M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.5l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.8 11.9 11.9 0 0 0 4.6 4.1c1.7.7 2.4.8 3.2.7a2.7 2.7 0 0 0 1.8-1.3 2.2 2.2 0 0 0 .2-1.3c-.1-.1-.2-.2-.5-.3z\"/></svg>";var WA="50494221224";
+var FLORES=[{"n": 1, "t": "basico", "name": "Ramo Mini", "d": "Gerberas, clavel y follaje", "s": []}, {"n": 2, "t": "basico", "name": "Ramo Económico", "d": "Claveles, gerbera y follajes", "s": []}, {"n": 3, "t": "basico", "name": "Ramo de Gerberas y Eucalipto", "d": "Gerberas con eucalipto", "s": []}, {"n": 4, "t": "basico", "name": "Ramo Mixto Pequeño", "d": "Lirios, rosas y baby", "s": []}, {"n": 5, "t": "basico", "name": "Ramo Mixto", "d": "Gerberas, lirios y baby", "s": []}, {"n": 6, "t": "basico", "name": "Ramo de Gerberas", "d": "Gerberas con follajes mixtos", "s": []}, {"n": 7, "t": "basico", "name": "Ramo de Gerberas y Baby", "d": "Gerberas con baby", "s": []}, {"n": 8, "t": "basico", "name": "Arreglo de Rosas, Gerberas y Eucalipto", "d": "Arreglo mediano fresco y colorido", "s": []}, {"n": 9, "t": "basico", "name": "Ramo Pequeño de Lirios", "d": "Lirios frescos en ramo pequeño", "s": []}, {"n": 10, "t": "clasico", "name": "Ramo Mariposa", "d": "Lirio, rosas y baby", "s": []}, {"n": 11, "t": "clasico", "name": "Ramo de Lirios", "d": "", "s": ["Pequeño", "Mediano", "Grande"]}, {"n": 12, "t": "clasico", "name": "Ramo de Gerberas y Lirios", "d": "Gerberas con lirios", "s": []}, {"n": 13, "t": "clasico", "name": "Ramo Mini de Gerbera y Hortensia", "d": "Mini gerberas y hortensia", "s": []}, {"n": 14, "t": "clasico", "name": "Ramo Mixto", "d": "Gerberas, rosas y claveles", "s": []}, {"n": 15, "t": "clasico", "name": "Ramo de Gerberas y Margaritas", "d": "Gerberas con margaritas", "s": []}, {"n": 16, "t": "clasico", "name": "Ramo de Rosas Inglesas", "d": "Rosas inglesas", "s": []}, {"n": 17, "t": "clasico", "name": "Gerberas y Rosas", "d": "", "s": ["Pequeño", "Grande"]}, {"n": 18, "t": "clasico", "name": "Ramo de 24 Rosas", "d": "24 rosas y eucalipto", "s": []}, {"n": 19, "t": "clasico", "name": "Ramo de 24 Rosas y Baby", "d": "24 rosas con baby", "s": []}, {"n": 20, "t": "clasico", "name": "Ramo de Gerberas Redondo", "d": "Gerberas en ramo redondo", "s": []}, {"n": 21, "t": "premium", "name": "Ramo de Graduación", "d": "Rosas, piedras y listón", "s": []}, {"n": 22, "t": "premium", "name": "Ramo Aurora Mediano", "d": "Lirios premium y rosas", "s": []}, {"n": 23, "t": "premium", "name": "Ramo Rosita", "d": "Gerberas, claveles y follajes", "s": []}, {"n": 24, "t": "premium", "name": "Ramo de Rosas, Girasol y Orquídea", "d": "Rosas, girasol y orquídea", "s": []}, {"n": 25, "t": "premium", "name": "Ramo Aurora Mixto", "d": "Rosas, gerberas, lirios, baby y follaje", "s": []}, {"n": 26, "t": "premium", "name": "Ramo de 50 Rosas y Baby", "d": "50 rosas con baby", "s": []}, {"n": 27, "t": "premium", "name": "Ramo Buchón de Girasoles", "d": "Girasoles en ramo buchón", "s": []}, {"n": 28, "t": "premium", "name": "Ramo Temático", "d": "Girasoles, rosas y shastas", "s": []}, {"n": 29, "t": "premium", "name": "Ramo Mixto Premium", "d": "Gerberas, lirios, rosas, margaritas y eucalipto", "s": []}, {"n": 30, "t": "lujo", "name": "Ramo Aurora Suelto", "d": "Lirios premium y rosas", "s": []}, {"n": 31, "t": "lujo", "name": "Ramo Aurora", "d": "Lirios, rosas y eucalipto", "s": []}, {"n": 32, "t": "lujo", "name": "Ramo de Rosas, Lisianthus y Lirios", "d": "Rosas, lisianthus y lirios", "s": []}, {"n": 33, "t": "lujo", "name": "Ramo Buchón 70 Rosas", "d": "70 rosas mixtas", "s": []}, {"n": 34, "t": "lujo", "name": "Maxi Ramo Temático", "d": "Girasoles, claveles, gerberas y follajes", "s": []}, {"n": 35, "t": "lujo", "name": "Ramo de Tulipanes y Rosas", "d": "Tulipanes rosados combinados con rosas", "s": []}, {"n": 36, "t": "lujo", "name": "Maxi Ramo Buchón Rosa", "d": "Lirios, rosas, claveles y gerberas", "s": []}, {"n": 37, "t": "lujo", "name": "Arreglo de 100 Rosas", "d": "100 rosas rojas premium", "s": []}, {"n": 38, "t": "lujo", "name": "Arreglo de Rosas y Orquídeas", "d": "Rosas rojas y orquídeas naturales blancas", "s": []}, {"n": 39, "t": "lujo", "name": "Ramo Temático con Peluche", "d": "", "s": []}];
+var TIER={basico:'Básico',clasico:'Clásico',premium:'Premium',lujo:'Lujo'};
+function msg(f,size){
+  var foto=new URL('r/'+f.n+'.jpg',location.href).href;
+  var t='Hola, me interesa «'+f.name+(size?' ('+size+')':'')+'» del catálogo de flores:\n'+foto+'\n¿Me confirmas disponibilidad y precio?';
+  return 'https://wa.me/'+WA+'?text='+encodeURIComponent(t);
+}
+FLORES.forEach(function(f,i){
+  var t=document.createElement('button');t.className='tile';t.type='button';
+  t.innerHTML='<img loading="lazy" alt=""><span class="lbl"></span><span class="go">'+"<svg viewBox=\"0 0 24 24\" width=\"16\" height=\"16\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M5 12h14M13 6l6 6-6 6\"/></svg>"+'</span>';
+  t.querySelector('img').src='r/'+f.n+'.jpg';t.querySelector('img').alt=f.name;
+  t.querySelector('.lbl').textContent=f.name;
+  t.onclick=function(){abrirLB(FLORES,i,function(o){
+    var links=o.s.length?o.s.map(function(s){return{text:'Consultar tamaño '+s.toLowerCase(),href:msg(o,s)}}):[{text:'Consultar por WhatsApp',href:msg(o)}];
+    return{src:'r/'+o.n+'.jpg',alt:o.name,kicker:TIER[o.t],title:o.name,desc:o.d,links:links,hint:o.s.length?'Disponible en '+(o.s.length==2?'dos':'tres')+' tamaños':''};
+  })};
+  document.querySelector('.grid[data-tier="'+f.t+'"]').appendChild(t);
+});
 
-<header>
-    <a href="index.html"><img src="logo..jpg" alt="Eternals Roses" class="logo"></a>
-    <p>Flores frescas para cada momento especial</p>
-    <div class="location">Comayagua, Honduras</div>
-</header>
+function abrirLB(items,i,render){
+  var lb=document.getElementById('lb'),cur=i;
+  function pinta(){
+    var o=items[cur],r=render(o,cur);
+    document.getElementById('lbImg').src=r.src;document.getElementById('lbImg').alt=r.alt;
+    document.getElementById('lbK').textContent=r.kicker;document.getElementById('lbT').textContent=r.title;
+    var d=document.getElementById('lbD');d.textContent=r.desc||'';d.style.display=r.desc?'block':'none';
+    var op=document.getElementById('lbO');op.innerHTML='';
+    r.links.forEach(function(l){var a=document.createElement('a');a.className='btnwa'+(l.alt?' alt':'');a.target='_blank';a.rel='noopener';a.href=l.href;a.innerHTML=WAICON+'<span></span>';a.lastChild.textContent=l.text;op.appendChild(a)});
+    if(r.hint){var s=document.createElement('small');s.textContent=r.hint;op.insertBefore(s,op.firstChild)}
+  }
+  window.__lbNav=function(d){cur=(cur+d+items.length)%items.length;pinta()};
+  pinta();lb.classList.add('open');document.body.style.overflow='hidden';
+}
+function cerrarLB(){document.getElementById('lb').classList.remove('open');document.body.style.overflow=''}
+document.addEventListener('keydown',function(e){var lb=document.getElementById('lb');if(!lb.classList.contains('open'))return;if(e.key==='Escape')cerrarLB();if(e.key==='ArrowRight')__lbNav(1);if(e.key==='ArrowLeft')__lbNav(-1)});
+document.getElementById('lb').addEventListener('click',function(e){if(e.target===this)cerrarLB()});
+(function(){var x0=null,lb=document.getElementById('lb');lb.addEventListener('touchstart',function(e){x0=e.touches[0].clientX},{passive:true});lb.addEventListener('touchend',function(e){if(x0===null)return;var dx=e.changedTouches[0].clientX-x0;x0=null;if(Math.abs(dx)>60)__lbNav(dx<0?1:-1)})})();
 
-<nav>
-    <a href="index.html">Inicio</a>
-    <a href="#basico">Básico</a>
-    <a href="#clasico">Clásico</a>
-    <a href="#premium">Premium</a>
-    <a href="#lujo">Lujo</a>
-    <a href="#contacto">Contacto</a>
-</nav>
-
-<section id="arreglos">
-    <h2>Nuestros Ramos</h2>
-
-    <div class="tier-nav">
-        <a href="#basico" class="chip chip-basico">Básico <small>hasta L 700</small></a>
-        <a href="#clasico" class="chip chip-clasico">Clásico <small>L 850 – 1,200</small></a>
-        <a href="#premium" class="chip chip-premium">Premium <small>L 1,300 – 1,800</small></a>
-        <a href="#lujo" class="chip chip-lujo">Lujo <small>desde L 2,000</small></a>
-    </div>
-
-    <!-- ========== BÁSICO ========== -->
-    <div class="tier tier-basico" id="basico">
-        <div class="tier-header">
-            <h3>Básico</h3>
-            <span class="tier-range">hasta L 700</span>
-            <p>Detalles frescos y accesibles para sorprender.</p>
-        </div>
-        <div class="gallery">
-
-            <div class="product-card">
-                <img src="Fotos%20Flores/Ramo%20mini,%20gerberas,%20clavel%20y%20follaje.jpg" alt="Ramo Mini" class="product-image" loading="lazy">
-                <div class="product-info">
-                    <h3>Ramo Mini</h3>
-                    <p>Gerberas, clavel y follaje</p>
-                    <p class="price">L 300</p>
-                    <span class="product-tag">Básico</span><br>
-                    <a href="https://wa.me/50494221224?text=Hola%2C%20quiero%20el%20Ramo%20Mini%20(L%20300)" class="button" target="_blank">Consultar por WhatsApp</a>
-                </div>
-            </div>
-
-            <div class="product-card">
-                <img src="Fotos%20Flores/Ramo%20economico,%20Claveles,%20gerbera%20y%20follajes..jpg" alt="Ramo Económico" class="product-image" loading="lazy">
-                <div class="product-info">
-                    <h3>Ramo Económico</h3>
-                    <p>Claveles, gerbera y follajes</p>
-                    <p class="price">L 350</p>
-                    <span class="product-tag">Básico</span><br>
-                    <a href="https://wa.me/50494221224?text=Hola%2C%20quiero%20el%20Ramo%20Econ%C3%B3mico%20(L%20350)" class="button" target="_blank">Consultar por WhatsApp</a>
-                </div>
-            </div>
-
-            <div class="product-card">
-                <img src="Fotos%20Flores/Ramo%20de%20gerberas%20y%20eucalipto..jpg" alt="Ramo de Gerberas y Eucalipto" class="product-image" loading="lazy">
-                <div class="product-info">
-                    <h3>Ramo de Gerberas y Eucalipto</h3>
-                    <p>Gerberas con eucalipto</p>
-                    <p class="price">L 400</p>
-                    <span class="product-tag">Básico</span><br>
-                    <a href="https://wa.me/50494221224?text=Hola%2C%20quiero%20el%20Ramo%20de%20Gerberas%20y%20Eucalipto%20(L%20400)" class="button" target="_blank">Consultar por WhatsApp</a>
-                </div>
-            </div>
-
-            <div class="product-card">
-                <img src="Fotos%20Flores/Ramo%20mixto%20peque%C3%B1o,%20Lirios,%20rosas%20y%20Baby..jpg" alt="Ramo Mixto Pequeño" class="product-image" loading="lazy">
-                <div class="product-info">
-                    <h3>Ramo Mixto Pequeño</h3>
-                    <p>Lirios, rosas y baby</p>
-                    <p class="price">L 550</p>
-                    <span class="product-tag">Básico</span><br>
-                    <a href="https://wa.me/50494221224?text=Hola%2C%20quiero%20el%20Ramo%20Mixto%20Peque%C3%B1o%20(L%20550)" class="button" target="_blank">Consultar por WhatsApp</a>
-                </div>
-            </div>
-
-            <div class="product-card">
-                <img src="Fotos%20Flores/Ramo%20mixto,%20gerberas,%20lirios%20y%20baby..jpg" alt="Ramo Mixto" class="product-image" loading="lazy">
-                <div class="product-info">
-                    <h3>Ramo Mixto</h3>
-                    <p>Gerberas, lirios y baby</p>
-                    <p class="price">L 550</p>
-                    <span class="product-tag">Básico</span><br>
-                    <a href="https://wa.me/50494221224?text=Hola%2C%20quiero%20el%20Ramo%20Mixto%20(L%20550)" class="button" target="_blank">Consultar por WhatsApp</a>
-                </div>
-            </div>
-
-            <div class="product-card">
-                <img src="Fotos%20Flores/Ramo%20de%20gerberas%20con%20follajes%20mixtos..jpg" alt="Ramo de Gerberas" class="product-image" loading="lazy">
-                <div class="product-info">
-                    <h3>Ramo de Gerberas</h3>
-                    <p>Gerberas con follajes mixtos</p>
-                    <p class="price">L 650</p>
-                    <span class="product-tag">Básico</span><br>
-                    <a href="https://wa.me/50494221224?text=Hola%2C%20quiero%20el%20Ramo%20de%20Gerberas%20(L%20650)" class="button" target="_blank">Consultar por WhatsApp</a>
-                </div>
-            </div>
-
-            <div class="product-card">
-                <img src="Fotos%20Flores/Ramos%20de%20Gerberas%20y%20Baby..jpg" alt="Ramo de Gerberas y Baby" class="product-image" loading="lazy">
-                <div class="product-info">
-                    <h3>Ramo de Gerberas y Baby</h3>
-                    <p>Gerberas con baby</p>
-                    <p class="price">L 650</p>
-                    <span class="product-tag">Básico</span><br>
-                    <a href="https://wa.me/50494221224?text=Hola%2C%20quiero%20el%20Ramo%20de%20Gerberas%20y%20Baby%20(L%20650)" class="button" target="_blank">Consultar por WhatsApp</a>
-                </div>
-            </div>
-
-            <div class="product-card">
-                <img src="Arreglo%20mediano,%20rosas,%20gerberas%20y%20eucalipto..JPG" alt="Arreglo de Rosas, Gerberas y Eucalipto" class="product-image" loading="lazy">
-                <div class="product-info">
-                    <h3>Arreglo de Rosas, Gerberas y Eucalipto</h3>
-                    <p>Arreglo mediano fresco y colorido</p>
-                    <p class="price">L 650</p>
-                    <span class="product-tag">Básico</span><br>
-                    <a href="https://wa.me/50494221224?text=Hola%2C%20quiero%20el%20Arreglo%20de%20Rosas%2C%20Gerberas%20y%20Eucalipto%20(L%20650)" class="button" target="_blank">Consultar por WhatsApp</a>
-                </div>
-            </div>
-
-            <div class="product-card">
-                <img src="Fotos%20Flores/Ramo%20peque%C3%B1o%20de%20lirios..jpg" alt="Ramo Pequeño de Lirios" class="product-image" loading="lazy">
-                <div class="product-info">
-                    <h3>Ramo Pequeño de Lirios</h3>
-                    <p>Lirios frescos en ramo pequeño</p>
-                    <p class="price">L 700</p>
-                    <span class="product-tag">Básico</span><br>
-                    <a href="https://wa.me/50494221224?text=Hola%2C%20quiero%20el%20Ramo%20Peque%C3%B1o%20de%20Lirios%20(L%20700)" class="button" target="_blank">Consultar por WhatsApp</a>
-                </div>
-            </div>
-
-        </div>
-    </div>
-
-    <!-- ========== CLÁSICO ========== -->
-    <div class="tier tier-clasico" id="clasico">
-        <div class="tier-header">
-            <h3>Clásico</h3>
-            <span class="tier-range">L 850 a L 1,200</span>
-            <p>Nuestros ramos favoritos para cualquier ocasión.</p>
-        </div>
-        <div class="gallery">
-
-            <div class="product-card">
-                <img src="Fotos%20Flores/Ramo%20mariposa,%20Lirio,%20Rosas%20y%20baby.jpg" alt="Ramo Mariposa" class="product-image" loading="lazy">
-                <div class="product-info">
-                    <h3>Ramo Mariposa</h3>
-                    <p>Lirio, rosas y baby</p>
-                    <p class="price">L 850</p>
-                    <span class="product-tag">Clásico</span><br>
-                    <a href="https://wa.me/50494221224?text=Hola%2C%20quiero%20el%20Ramo%20Mariposa%20(L%20850)" class="button" target="_blank">Consultar por WhatsApp</a>
-                </div>
-            </div>
-
-            <div class="product-card">
-                <img src="Fotos%20Flores/Ramo%20de%20lirios.%20Peque%C3%B1o.%20mediano.%20%20%20%20grande.jpg" alt="Ramo de Lirios" class="product-image" loading="lazy">
-                <div class="product-info">
-                    <h3>Ramo de Lirios</h3>
-                    <p>Disponible en tres tamaños</p>
-                    <ul class="sizes">
-                        <li><span>Pequeño</span> <strong>L 900</strong></li>
-                        <li><span>Mediano</span> <strong>L 1,400</strong></li>
-                        <li><span>Grande</span> <strong>L 1,800</strong></li>
-                    </ul>
-                    <span class="product-tag">Clásico</span>
-                    <div class="size-buttons">
-                        <a href="https://wa.me/50494221224?text=Hola%2C%20quiero%20el%20Ramo%20de%20Lirios%20Peque%C3%B1o%20(L%20900)" class="button" target="_blank">Pequeño</a>
-                        <a href="https://wa.me/50494221224?text=Hola%2C%20quiero%20el%20Ramo%20de%20Lirios%20Mediano%20(L%201400)" class="button" target="_blank">Mediano</a>
-                        <a href="https://wa.me/50494221224?text=Hola%2C%20quiero%20el%20Ramo%20de%20Lirios%20Grande%20(L%201800)" class="button" target="_blank">Grande</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="product-card">
-                <img src="Fotos%20Flores/ramo%20de%20gerberas%20y%20lirios.jpg" alt="Ramo de Gerberas y Lirios" class="product-image" loading="lazy">
-                <div class="product-info">
-                    <h3>Ramo de Gerberas y Lirios</h3>
-                    <p>Gerberas con lirios</p>
-                    <p class="price">L 950</p>
-                    <span class="product-tag">Clásico</span><br>
-                    <a href="https://wa.me/50494221224?text=Hola%2C%20quiero%20el%20Ramo%20de%20Gerberas%20y%20Lirios%20(L%20950)" class="button" target="_blank">Consultar por WhatsApp</a>
-                </div>
-            </div>
-
-            <div class="product-card">
-                <img src="Fotos%20Flores/Ramo%20mini%20gerbera%20y%20hortensia..jpg" alt="Ramo Mini de Gerbera y Hortensia" class="product-image" loading="lazy">
-                <div class="product-info">
-                    <h3>Ramo Mini de Gerbera y Hortensia</h3>
-                    <p>Mini gerberas y hortensia</p>
-                    <p class="price">L 950</p>
-                    <span class="product-tag">Clásico</span><br>
-                    <a href="https://wa.me/50494221224?text=Hola%2C%20quiero%20el%20Ramo%20Mini%20de%20Gerbera%20y%20Hortensia%20(L%20950)" class="button" target="_blank">Consultar por WhatsApp</a>
-                </div>
-            </div>
-
-            <div class="product-card">
-                <img src="Fotos%20Flores/Ramo%20mixto,%20Gerberas,%20Rosas%20y%20Claveles..jpg" alt="Ramo Mixto" class="product-image" loading="lazy">
-                <div class="product-info">
-                    <h3>Ramo Mixto</h3>
-                    <p>Gerberas, rosas y claveles</p>
-                    <p class="price">L 950</p>
-                    <span class="product-tag">Clásico</span><br>
-                    <a href="https://wa.me/50494221224?text=Hola%2C%20quiero%20el%20Ramo%20Mixto%20(L%20950)" class="button" target="_blank">Consultar por WhatsApp</a>
-                </div>
-            </div>
-
-            <div class="product-card">
-                <img src="Fotos%20Flores/Ramo%20de%20gerberas%20y%20margaritas..jpg" alt="Ramo de Gerberas y Margaritas" class="product-image" loading="lazy">
-                <div class="product-info">
-                    <h3>Ramo de Gerberas y Margaritas</h3>
-                    <p>Gerberas con margaritas</p>
-                    <p class="price">L 1,000</p>
-                    <span class="product-tag">Clásico</span><br>
-                    <a href="https://wa.me/50494221224?text=Hola%2C%20quiero%20el%20Ramo%20de%20Gerberas%20y%20Margaritas%20(L%201000)" class="button" target="_blank">Consultar por WhatsApp</a>
-                </div>
-            </div>
-
-            <div class="product-card">
-                <img src="Fotos%20Flores/Ramo%20de%20rosas%20inglesas..jpg" alt="Ramo de Rosas Inglesas" class="product-image" loading="lazy">
-                <div class="product-info">
-                    <h3>Ramo de Rosas Inglesas</h3>
-                    <p>Rosas inglesas</p>
-                    <p class="price">L 1,000</p>
-                    <span class="product-tag">Clásico</span><br>
-                    <a href="https://wa.me/50494221224?text=Hola%2C%20quiero%20el%20Ramo%20de%20Rosas%20Inglesas%20(L%201000)" class="button" target="_blank">Consultar por WhatsApp</a>
-                </div>
-            </div>
-
-            <div class="product-card">
-                <img src="Fotos%20Flores/Gerberas%20y%20rosas.%20grande.%20%20%20%20peque%C3%B1o.jpg" alt="Gerberas y Rosas" class="product-image" loading="lazy">
-                <div class="product-info">
-                    <h3>Gerberas y Rosas</h3>
-                    <p>Disponible en dos tamaños</p>
-                    <ul class="sizes">
-                        <li><span>Pequeño</span> <strong>L 1,100</strong></li>
-                        <li><span>Grande</span> <strong>L 1,800</strong></li>
-                    </ul>
-                    <span class="product-tag">Clásico</span>
-                    <div class="size-buttons">
-                        <a href="https://wa.me/50494221224?text=Hola%2C%20quiero%20Gerberas%20y%20Rosas%20Peque%C3%B1o%20(L%201100)" class="button" target="_blank">Pequeño</a>
-                        <a href="https://wa.me/50494221224?text=Hola%2C%20quiero%20Gerberas%20y%20Rosas%20Grande%20(L%201800)" class="button" target="_blank">Grande</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="product-card">
-                <img src="Fotos%20Flores/Ramo%20de%2024%20Rosas%20y%20Eucalipto..jpg" alt="Ramo de 24 Rosas" class="product-image" loading="lazy">
-                <div class="product-info">
-                    <h3>Ramo de 24 Rosas</h3>
-                    <p>24 rosas y eucalipto</p>
-                    <p class="price">L 1,200</p>
-                    <span class="product-tag">Clásico</span><br>
-                    <a href="https://wa.me/50494221224?text=Hola%2C%20quiero%20el%20Ramo%20de%2024%20Rosas%20(L%201200)" class="button" target="_blank">Consultar por WhatsApp</a>
-                </div>
-            </div>
-
-            <div class="product-card">
-                <img src="Fotos%20Flores/Ramo%20de%2024%20rosas%20y%20baby.jpg" alt="Ramo de 24 Rosas y Baby" class="product-image" loading="lazy">
-                <div class="product-info">
-                    <h3>Ramo de 24 Rosas y Baby</h3>
-                    <p>24 rosas con baby</p>
-                    <p class="price">L 1,200</p>
-                    <span class="product-tag">Clásico</span><br>
-                    <a href="https://wa.me/50494221224?text=Hola%2C%20quiero%20el%20Ramo%20de%2024%20Rosas%20y%20Baby%20(L%201200)" class="button" target="_blank">Consultar por WhatsApp</a>
-                </div>
-            </div>
-
-            <div class="product-card">
-                <img src="Fotos%20Flores/Ramo%20de%20gerberas%20redondo..jpg" alt="Ramo de Gerberas Redondo" class="product-image" loading="lazy">
-                <div class="product-info">
-                    <h3>Ramo de Gerberas Redondo</h3>
-                    <p>Gerberas en ramo redondo</p>
-                    <p class="price">L 1,200</p>
-                    <span class="product-tag">Clásico</span><br>
-                    <a href="https://wa.me/50494221224?text=Hola%2C%20quiero%20el%20Ramo%20de%20Gerberas%20Redondo%20(L%201200)" class="button" target="_blank">Consultar por WhatsApp</a>
-                </div>
-            </div>
-
-        </div>
-    </div>
-
-    <!-- ========== PREMIUM ========== -->
-    <div class="tier tier-premium" id="premium">
-        <div class="tier-header">
-            <h3>Premium</h3>
-            <span class="tier-range">L 1,300 a L 1,800</span>
-            <p>Diseños elaborados con flores selectas.</p>
-        </div>
-        <div class="gallery">
-
-            <div class="product-card">
-                <img src="Fotos%20Flores/Ramo%20de%20graduacion,%20Rosas,%20Piedras%20y%20Liston..jpg" alt="Ramo de Graduación" class="product-image" loading="lazy">
-                <div class="product-info">
-                    <h3>Ramo de Graduación</h3>
-                    <p>Rosas, piedras y listón</p>
-                    <p class="price">L 1,300</p>
-                    <span class="product-tag">Premium</span><br>
-                    <a href="https://wa.me/50494221224?text=Hola%2C%20quiero%20el%20Ramo%20de%20Graduaci%C3%B3n%20(L%201300)" class="button" target="_blank">Consultar por WhatsApp</a>
-                </div>
-            </div>
-
-            <div class="product-card">
-                <img src="Fotos%20Flores/Ramo%20aurora%20mediano,%20Lirios%20premium%20y%20rosas..jpg" alt="Ramo Aurora Mediano" class="product-image" loading="lazy">
-                <div class="product-info">
-                    <h3>Ramo Aurora Mediano</h3>
-                    <p>Lirios premium y rosas</p>
-                    <p class="price">L 1,400</p>
-                    <span class="product-tag">Premium</span><br>
-                    <a href="https://wa.me/50494221224?text=Hola%2C%20quiero%20el%20Ramo%20Aurora%20Mediano%20(L%201400)" class="button" target="_blank">Consultar por WhatsApp</a>
-                </div>
-            </div>
-
-            <div class="product-card">
-                <img src="Fotos%20Flores/Ramo%20rosita,%20gerberas,%20claveles%20y%20follajes..jpg" alt="Ramo Rosita" class="product-image" loading="lazy">
-                <div class="product-info">
-                    <h3>Ramo Rosita</h3>
-                    <p>Gerberas, claveles y follajes</p>
-                    <p class="price">L 1,500</p>
-                    <span class="product-tag">Premium</span><br>
-                    <a href="https://wa.me/50494221224?text=Hola%2C%20quiero%20el%20Ramo%20Rosita%20(L%201500)" class="button" target="_blank">Consultar por WhatsApp</a>
-                </div>
-            </div>
-
-            <div class="product-card">
-                <img src="Fotos%20Flores/Ramo%20de%20Rosas,%20Girasol%20y%20Orquidea..jpg" alt="Ramo de Rosas, Girasol y Orquídea" class="product-image" loading="lazy">
-                <div class="product-info">
-                    <h3>Ramo de Rosas, Girasol y Orquídea</h3>
-                    <p>Rosas, girasol y orquídea</p>
-                    <p class="price">L 1,700</p>
-                    <span class="product-tag">Premium</span><br>
-                    <a href="https://wa.me/50494221224?text=Hola%2C%20quiero%20el%20Ramo%20de%20Rosas%2C%20Girasol%20y%20Orqu%C3%ADdea%20(L%201700)" class="button" target="_blank">Consultar por WhatsApp</a>
-                </div>
-            </div>
-
-            <div class="product-card">
-                <img src="Fotos%20Flores/Ramo%20aurora%20mixto,%20Rosas,%20Gerberas,%20Lirios,%20Baby%20y%20follaje..jpg" alt="Ramo Aurora Mixto" class="product-image" loading="lazy">
-                <div class="product-info">
-                    <h3>Ramo Aurora Mixto</h3>
-                    <p>Rosas, gerberas, lirios, baby y follaje</p>
-                    <p class="price">L 1,700</p>
-                    <span class="product-tag">Premium</span><br>
-                    <a href="https://wa.me/50494221224?text=Hola%2C%20quiero%20el%20Ramo%20Aurora%20Mixto%20(L%201700)" class="button" target="_blank">Consultar por WhatsApp</a>
-                </div>
-            </div>
-
-            <div class="product-card">
-                <img src="Fotos%20Flores/Ramo%20de%2050%20rosas%20y%20baby..jpg" alt="Ramo de 50 Rosas y Baby" class="product-image" loading="lazy">
-                <div class="product-info">
-                    <h3>Ramo de 50 Rosas y Baby</h3>
-                    <p>50 rosas con baby</p>
-                    <p class="price">L 1,800</p>
-                    <span class="product-tag">Premium</span><br>
-                    <a href="https://wa.me/50494221224?text=Hola%2C%20quiero%20el%20Ramo%20de%2050%20Rosas%20y%20Baby%20(L%201800)" class="button" target="_blank">Consultar por WhatsApp</a>
-                </div>
-            </div>
-
-            <div class="product-card">
-                <img src="Fotos%20Flores/Ramo%20buchon%20de%20girasoles..jpg" alt="Ramo Buchón de Girasoles" class="product-image" loading="lazy">
-                <div class="product-info">
-                    <h3>Ramo Buchón de Girasoles</h3>
-                    <p>Girasoles en ramo buchón</p>
-                    <p class="price">L 1,800</p>
-                    <span class="product-tag">Premium</span><br>
-                    <a href="https://wa.me/50494221224?text=Hola%2C%20quiero%20el%20Ramo%20Buch%C3%B3n%20de%20Girasoles%20(L%201800)" class="button" target="_blank">Consultar por WhatsApp</a>
-                </div>
-            </div>
-
-            <div class="product-card">
-                <img src="Fotos%20Flores/Ramo%20tematico,%20Girasoles,%20Rosas%20y%20Shastas..jpg" alt="Ramo Temático" class="product-image" loading="lazy">
-                <div class="product-info">
-                    <h3>Ramo Temático</h3>
-                    <p>Girasoles, rosas y shastas</p>
-                    <p class="price">L 1,800</p>
-                    <span class="product-tag">Premium</span><br>
-                    <a href="https://wa.me/50494221224?text=Hola%2C%20quiero%20el%20Ramo%20Tem%C3%A1tico%20(L%201800)" class="button" target="_blank">Consultar por WhatsApp</a>
-                </div>
-            </div>
-
-            <div class="product-card">
-                <img src="Ramo%20mixto,%20Gerberas,%20Lirios,%20Rosas,%20Margaritas%20y%20eucalipto..JPG" alt="Ramo Mixto Premium" class="product-image" loading="lazy">
-                <div class="product-info">
-                    <h3>Ramo Mixto Premium</h3>
-                    <p>Gerberas, lirios, rosas, margaritas y eucalipto</p>
-                    <p class="price">L 1,800</p>
-                    <span class="product-tag">Premium</span><br>
-                    <a href="https://wa.me/50494221224?text=Hola%2C%20quiero%20el%20Ramo%20Mixto%20Premium%20(L%201800)" class="button" target="_blank">Consultar por WhatsApp</a>
-                </div>
-            </div>
-
-        </div>
-    </div>
-
-    <!-- ========== LUJO ========== -->
-    <div class="tier tier-lujo" id="lujo">
-        <div class="tier-header">
-            <h3>Lujo</h3>
-            <span class="tier-range">desde L 2,000</span>
-            <p>Nuestras piezas más espectaculares.</p>
-        </div>
-        <div class="gallery">
-
-            <div class="product-card">
-                <img src="Fotos%20Flores/Ramo%20aurora%20suelto,%20Lirios%20premium%20y%20rosas..jpg" alt="Ramo Aurora Suelto" class="product-image" loading="lazy">
-                <div class="product-info">
-                    <h3>Ramo Aurora Suelto</h3>
-                    <p>Lirios premium y rosas</p>
-                    <p class="price">L 2,000</p>
-                    <span class="product-tag">Lujo</span><br>
-                    <a href="https://wa.me/50494221224?text=Hola%2C%20quiero%20el%20Ramo%20Aurora%20Suelto%20(L%202000)" class="button" target="_blank">Consultar por WhatsApp</a>
-                </div>
-            </div>
-
-            <div class="product-card">
-                <img src="Fotos%20Flores/Ramo%20Aurora,%20Lirios,%20Rosas%20y%20eucalipto..jpg" alt="Ramo Aurora" class="product-image" loading="lazy">
-                <div class="product-info">
-                    <h3>Ramo Aurora</h3>
-                    <p>Lirios, rosas y eucalipto</p>
-                    <p class="price">L 2,000</p>
-                    <span class="product-tag">Lujo</span><br>
-                    <a href="https://wa.me/50494221224?text=Hola%2C%20quiero%20el%20Ramo%20Aurora%20(L%202000)" class="button" target="_blank">Consultar por WhatsApp</a>
-                </div>
-            </div>
-
-            <div class="product-card">
-                <img src="Fotos%20Flores/Ramo%20de%20rosas,%20Lisianthusy%20Lirios..jpg" alt="Ramo de Rosas, Lisianthus y Lirios" class="product-image" loading="lazy">
-                <div class="product-info">
-                    <h3>Ramo de Rosas, Lisianthus y Lirios</h3>
-                    <p>Rosas, lisianthus y lirios</p>
-                    <p class="price">L 2,200</p>
-                    <span class="product-tag">Lujo</span><br>
-                    <a href="https://wa.me/50494221224?text=Hola%2C%20quiero%20el%20Ramo%20de%20Rosas%2C%20Lisianthus%20y%20Lirios%20(L%202200)" class="button" target="_blank">Consultar por WhatsApp</a>
-                </div>
-            </div>
-
-            <div class="product-card">
-                <img src="Fotos%20Flores/Ramo%20buchon,%2070%20rosas%20mixtas..jpg" alt="Ramo Buchón 70 Rosas" class="product-image" loading="lazy">
-                <div class="product-info">
-                    <h3>Ramo Buchón 70 Rosas</h3>
-                    <p>70 rosas mixtas</p>
-                    <p class="price">L 2,800</p>
-                    <span class="product-tag">Lujo</span><br>
-                    <a href="https://wa.me/50494221224?text=Hola%2C%20quiero%20el%20Ramo%20Buch%C3%B3n%2070%20Rosas%20(L%202800)" class="button" target="_blank">Consultar por WhatsApp</a>
-                </div>
-            </div>
-
-            <div class="product-card">
-                <img src="Fotos%20Flores/Maxi%20ramo%20tematico,%20Girasoles,%20Claveles,%20Gerberas%20y%20follajes..jpg" alt="Maxi Ramo Temático" class="product-image" loading="lazy">
-                <div class="product-info">
-                    <h3>Maxi Ramo Temático</h3>
-                    <p>Girasoles, claveles, gerberas y follajes</p>
-                    <p class="price">L 2,800</p>
-                    <span class="product-tag">Lujo</span><br>
-                    <a href="https://wa.me/50494221224?text=Hola%2C%20quiero%20el%20Maxi%20Ramo%20Tem%C3%A1tico%20(L%202800)" class="button" target="_blank">Consultar por WhatsApp</a>
-                </div>
-            </div>
-
-            <div class="product-card">
-                <img src="Ramo%20de%20tulipanes%20y%20rosas..JPG" alt="Ramo de Tulipanes y Rosas" class="product-image" loading="lazy">
-                <div class="product-info">
-                    <h3>Ramo de Tulipanes y Rosas</h3>
-                    <p>Tulipanes rosados combinados con rosas</p>
-                    <p class="price">L 3,000</p>
-                    <span class="product-tag">Lujo</span><br>
-                    <a href="https://wa.me/50494221224?text=Hola%2C%20quiero%20el%20Ramo%20de%20Tulipanes%20y%20Rosas%20(L%203000)" class="button" target="_blank">Consultar por WhatsApp</a>
-                </div>
-            </div>
-
-            <div class="product-card">
-                <img src="Fotos%20Flores/Maxi%20ramo%20buchon%20rosa,%20Lirios,%20Rosas,%20Claveles%20y%20Gerberas..jpg" alt="Maxi Ramo Buchón Rosa" class="product-image" loading="lazy">
-                <div class="product-info">
-                    <h3>Maxi Ramo Buchón Rosa</h3>
-                    <p>Lirios, rosas, claveles y gerberas</p>
-                    <p class="price">L 3,500</p>
-                    <span class="product-tag">Lujo</span><br>
-                    <a href="https://wa.me/50494221224?text=Hola%2C%20quiero%20el%20Maxi%20Ramo%20Buch%C3%B3n%20Rosa%20(L%203500)" class="button" target="_blank">Consultar por WhatsApp</a>
-                </div>
-            </div>
-
-            <div class="product-card">
-                <img src="Arreglo%20en%20base%20a%20100%20rosas.JPG" alt="Arreglo de 100 Rosas" class="product-image" loading="lazy">
-                <div class="product-info">
-                    <h3>Arreglo de 100 Rosas</h3>
-                    <p>100 rosas rojas premium</p>
-                    <p class="price">L 4,000</p>
-                    <span class="product-tag">Lujo</span><br>
-                    <a href="https://wa.me/50494221224?text=Hola%2C%20quiero%20el%20Arreglo%20de%20100%20Rosas%20(L%204000)" class="button" target="_blank">Consultar por WhatsApp</a>
-                </div>
-            </div>
-
-            <div class="product-card">
-                <img src="Arreglo%20en%20base%20a%20rosas%20y%20orquideas%20naturales..JPG" alt="Arreglo de Rosas y Orquídeas" class="product-image" loading="lazy">
-                <div class="product-info">
-                    <h3>Arreglo de Rosas y Orquídeas</h3>
-                    <p>Rosas rojas y orquídeas naturales blancas</p>
-                    <p class="price">L 5,200</p>
-                    <span class="product-tag">Lujo</span><br>
-                    <a href="https://wa.me/50494221224?text=Hola%2C%20quiero%20el%20Arreglo%20de%20Rosas%20y%20Orqu%C3%ADdeas%20(L%205200)" class="button" target="_blank">Consultar por WhatsApp</a>
-                </div>
-            </div>
-
-            <div class="product-card">
-                <img src="Fotos%20Flores/Ramo%20tematico,%20Varia%20precio%20segun%20peluche..jpg" alt="Ramo Temático con Peluche" class="product-image" loading="lazy">
-                <div class="product-info">
-                    <h3>Ramo Temático con Peluche</h3>
-                    <p>El precio varía según el peluche</p>
-                    <p class="price">Consultar</p>
-                    <span class="product-tag">Lujo</span><br>
-                    <a href="https://wa.me/50494221224?text=Hola%2C%20quiero%20el%20Ramo%20Tem%C3%A1tico%20con%20Peluche" class="button" target="_blank">Consultar por WhatsApp</a>
-                </div>
-            </div>
-
-        </div>
-    </div>
-</section>
-
-<div style="text-align:center; margin: 25px 0;">
-    <a href="index.html" class="back-home">← Volver al inicio</a>
-</div>
-
-<footer id="contacto">
-    <h3>Eternals Roses</h3>
-    <div class="contact-info">
-        <p>Comayagua, Honduras</p>
-        <p>WhatsApp: +504 9422-1224</p>
-    </div>
-    <p class="tagline">Detalles que florecen para siempre</p>
-</footer>
-
-<a href="https://wa.me/50494221224?text=Hola%2C%20quiero%20información%20sobre%20los%20arreglos%20florales" 
-   class="whatsapp-float" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24" width="30" height="30" fill="#fff" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.5l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.8 11.9 11.9 0 0 0 4.6 4.1c1.7.7 2.4.8 3.2.7a2.7 2.7 0 0 0 1.8-1.3 2.2 2.2 0 0 0 .2-1.3c-.1-.1-.2-.2-.5-.3z"/></svg></a>
-
+</script>
 </body>
 </html>

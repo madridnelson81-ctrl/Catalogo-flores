@@ -1,417 +1,82 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Eternal Roses | Detalles que florecen para siempre</title>
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Eternals Roses | Detalles que florecen para siempre</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Neuton:ital,wght@0,300;0,400;0,700;0,800;1,400&display=swap" rel="stylesheet">
+<style>
+:root{--vino:#5b2a3d;--malva:#b5708b;--malva2:#c98aa3;--crema:#f5ede6;--taupe:#d8c7b8;--taupe2:#c4ae9b;--txt:#4a2a36}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth}
+body{font-family:'Neuton',Georgia,'Times New Roman',serif;font-size:19px;line-height:1.45;color:var(--txt);background:var(--crema);min-height:100vh}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit}
+img{display:block;max-width:100%}
+.wrap{max-width:560px;margin:0 auto;padding:0 16px}
+.wa-float{position:fixed;right:18px;bottom:20px;width:56px;height:56px;border-radius:50%;background:#25D366;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 18px rgba(0,0,0,.28);z-index:50}
+.wa-float svg{display:block}
 
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      color: #333;
-      line-height: 1.6;
-      background-color: #f4f2ee;
-      position: relative;
-      min-height: 100vh;
-    }
-
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      z-index: -1;
-      background: url("fondo..jpg") center/cover no-repeat;
-      opacity: 0.85;
-    }
-
-    .container {
-      max-width: 480px;
-      margin: 0 auto;
-      padding: 20px 16px 60px;
-    }
-
-    .header {
-      text-align: center;
-      padding: 16px 10px 24px;
-      background: linear-gradient(rgba(255,255,255,.5), rgba(255,255,255,0));
-      border-radius: 0 0 20px 20px;
-      margin-bottom: 18px;
-    }
-
-    .logo {
-      width: min(360px, 88vw);
-      height: auto;
-      mix-blend-mode: multiply;
-      display: block;
-      margin: 0 auto 6px;
-    }
-
-    .slogan {
-      font-size: 1rem;
-      color: #c2185b;
-      font-weight: 500;
-    }
-
-    .location {
-      font-size: 0.85rem;
-      color: #888;
-      margin-top: 3px;
-    }
-
-    .grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 14px;
-      margin-bottom: 26px;
-    }
-
-    .card {
-      background: rgba(255, 255, 255, 0.93);
-      border-radius: 18px;
-      padding: 22px 12px;
-      text-align: center;
-      box-shadow: 0 4px 15px rgba(194, 24, 91, 0.08);
-      border: 1px solid rgba(233, 30, 99, 0.12);
-      transition: transform 0.2s, box-shadow 0.2s;
-      text-decoration: none;
-      display: block;
-      color: inherit;
-    }
-
-    .card.active {
-      border: 2px solid #e91e63;
-      background: linear-gradient(135deg, #fff5f7 0%, #ffe4ec 100%);
-    }
-
-    .card.active:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 8px 22px rgba(233, 30, 99, 0.2);
-    }
-
-    .card .icon {
-      font-size: 1.9rem;
-      margin-bottom: 8px;
-      display: block;
-    }
-
-    .card h3 {
-      font-size: 0.98rem;
-      font-weight: 600;
-      color: #c2185b;
-      margin-bottom: 3px;
-    }
-
-    .card .subtitle {
-      font-size: 0.78rem;
-      color: #888;
-    }
-
-    .card.coming-soon {
-      opacity: 0.7;
-      background: rgba(255, 255, 255, 0.78);
-      pointer-events: none;
-    }
-
-    .card.coming-soon h3 { color: #999; }
-
-    .card .badge {
-      display: inline-block;
-      margin-top: 10px;
-      background: #f8bbd0;
-      color: #c2185b;
-      font-size: 0.68rem;
-      font-weight: 700;
-      padding: 4px 11px;
-      border-radius: 20px;
-      text-transform: uppercase;
-      letter-spacing: 0.4px;
-    }
-
-    .btn-catalogo {
-      display: block;
-      width: 100%;
-      background: linear-gradient(135deg, #e91e63, #c2185b);
-      color: white;
-      text-align: center;
-      padding: 16px;
-      border-radius: 14px;
-      font-size: 1.05rem;
-      font-weight: 600;
-      text-decoration: none;
-      margin-bottom: 26px;
-      box-shadow: 0 4px 15px rgba(233, 30, 99, 0.3);
-      transition: transform 0.2s, box-shadow 0.2s;
-    }
-
-    .btn-catalogo:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(233, 30, 99, 0.4);
-    }
-
-    .section {
-      background: rgba(255, 255, 255, 0.94);
-      border-radius: 18px;
-      padding: 22px 18px;
-      margin-bottom: 18px;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-      border: 1px solid rgba(233, 30, 99, 0.1);
-    }
-
-    .section-title {
-      font-size: 0.72rem;
-      font-weight: 700;
-      letter-spacing: 1.2px;
-      text-transform: uppercase;
-      color: #fff;
-      background: linear-gradient(135deg, #e91e63, #c2185b);
-      padding: 10px 14px;
-      border-radius: 12px;
-      margin: -22px -18px 18px -18px;
-      text-align: center;
-    }
-
-    .philosophy {
-      font-size: 1.15rem;
-      font-style: italic;
-      text-align: center;
-      color: #c2185b;
-      padding: 6px 4px;
-      line-height: 1.5;
-      font-weight: 500;
-    }
-
-    .section h2 {
-      font-size: 1.05rem;
-      font-weight: 600;
-      margin-bottom: 10px;
-      color: #c2185b;
-    }
-
-    .section p {
-      font-size: 0.9rem;
-      color: #444;
-      text-align: justify;
-    }
-
-    .footer {
-      text-align: center;
-      margin-top: 24px;
-      font-size: 0.82rem;
-      color: #888;
-    }
-
-    .footer strong { color: #c2185b; }
-
-    .whatsapp-float {
-      position: fixed;
-      bottom: 22px;
-      right: 22px;
-      background-color: #25D366;
-      color: white;
-      width: 56px;
-      height: 56px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 28px;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-      z-index: 1000;
-      text-decoration: none;
-      transition: transform 0.25s;
-    }
-    .whatsapp-float:hover { transform: scale(1.1); }
-
-    /* Estilos para la guía de cuidados expandible */
-    .care-preview {
-      font-size: 0.9rem;
-      color: #444;
-      text-align: justify;
-      margin-bottom: 12px;
-    }
-
-    .care-toggle {
-      display: block;
-      width: 100%;
-      background: linear-gradient(135deg, #fff5f7, #ffe4ec);
-      border: 1.5px solid #e91e63;
-      color: #c2185b;
-      padding: 12px 16px;
-      border-radius: 12px;
-      font-size: 0.95rem;
-      font-weight: 600;
-      cursor: pointer;
-      text-align: center;
-      transition: background 0.2s, transform 0.2s;
-    }
-
-    .care-toggle:hover {
-      background: linear-gradient(135deg, #ffe4ec, #f8bbd0);
-      transform: translateY(-1px);
-    }
-
-    .care-full {
-      display: none;
-      margin-top: 16px;
-      animation: fadeIn 0.3s ease;
-    }
-
-    .care-full.open {
-      display: block;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(-8px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    .care-full h3 {
-      font-size: 1rem;
-      color: #c2185b;
-      margin: 16px 0 8px;
-      font-weight: 600;
-    }
-
-    .care-full h3:first-child {
-      margin-top: 0;
-    }
-
-    .care-full p {
-      font-size: 0.88rem;
-      color: #444;
-      text-align: justify;
-      margin-bottom: 10px;
-    }
-
-    .care-full ol {
-      margin: 8px 0 12px 18px;
-    }
-
-    .care-full li {
-      font-size: 0.88rem;
-      color: #444;
-      margin-bottom: 10px;
-      text-align: justify;
-    }
-
-    .care-full li strong {
-      color: #c2185b;
-    }
-
-    .care-closing {
-      font-style: italic;
-      text-align: center;
-      color: #c2185b;
-      margin-top: 16px;
-      font-size: 0.9rem;
-      line-height: 1.5;
-    }
-  
-    /* ===== Estilo rosa + letra cursiva ===== */
-    body { font-family: 'Dancing Script','Segoe Script','Brush Script MT',cursive; font-size: 19px; }
-    .header {
-      background: linear-gradient(180deg, #d38d98 0%, #c47885 100%);
-      border-radius: 0 0 34px 34px;
-      padding: 30px 18px 34px;
-      margin: -20px -16px 24px;
-      box-shadow: 0 12px 30px rgba(180, 90, 107, .35);
-    }
-    .logo {
-      mix-blend-mode: normal;
-      border-radius: 18px;
-      box-shadow: 0 8px 24px rgba(0,0,0,.28);
-      margin-bottom: 12px;
-    }
-    .slogan {
-      font-family: 'Great Vibes','Segoe Script','Brush Script MT',cursive;
-      font-size: 2.5rem;
-      font-weight: 400;
-      line-height: 1.1;
-      color: #fff;
-    }
-    .location { color: rgba(255,255,255,.92); font-size: 1.1rem; }
-    .btn-catalogo { font-size: 1.4rem; font-weight: 700; }
-    .tile-img {
-      width: 100%; height: 130px; object-fit: cover; display: block;
-      border-radius: 14px; margin-bottom: 10px;
-      box-shadow: 0 4px 14px rgba(196, 114, 127, .35);
-    }
-    .card { padding: 12px 12px 16px; }
-    .card h3 { font-size: 1.3rem; font-weight: 700; }
-    .card .subtitle { font-size: 1.05rem; }
-    .section-title { font-size: 1.2rem; letter-spacing: .5px; text-transform: none; font-weight: 700; }
-    .section p, .care-preview, .care-full p, .care-full li { font-size: 1.1rem !important; text-align: left; }
-    .philosophy { font-size: 1.7rem; }
-    .section h2, .care-full h3 { font-size: 1.4rem; }
-    .care-toggle { font-family: inherit; font-size: 1.2rem; font-weight: 700; }
-    .care-closing { font-size: 1.15rem !important; text-align: center !important; }
-    .footer { font-size: 1.05rem; }
-    .whatsapp-float svg { display: block; }
-
-  </style>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500;600;700&family=Great+Vibes&display=swap" rel="stylesheet">
+body{background:var(--crema)}
+.hero{position:relative;background:linear-gradient(170deg,#b56f8a 0%,#c98aa3 55%,#e3b3c4 100%);padding:26px 22px 30px;border-radius:0 0 36px 36px;box-shadow:0 14px 34px rgba(150,80,110,.3);overflow:hidden}
+.hero .in{max-width:520px;margin:0 auto}
+.hero .logo{width:120px;border-radius:16px;box-shadow:0 6px 18px rgba(0,0,0,.25)}
+.hero h1{margin:22px 0 20px;color:#fff;font-weight:800;font-size:clamp(2.9rem,14vw,4.4rem);line-height:.92;letter-spacing:-.02em;text-shadow:0 2px 14px rgba(120,40,80,.25)}
+.hero h1 em{font-weight:300;font-style:italic;display:block}
+.hero .foto{border-radius:28px;overflow:hidden;box-shadow:0 16px 36px rgba(90,30,60,.4);aspect-ratio:4/4.6;background:#a9647f}
+.hero .foto img{width:100%;height:100%;object-fit:cover}
+.sect-t{max-width:560px;margin:30px auto 12px;padding:0 20px;text-align:center;font-size:1.9rem;font-weight:800;color:var(--vino);line-height:1}
+.sect-t small{display:block;font-size:1.05rem;font-weight:400;font-style:italic;color:#7a5565;margin-top:6px}
+.cats{max-width:560px;margin:0 auto;padding:0 16px;display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.cats .tile{aspect-ratio:3/4.1}
+.cats .tile .lbl{font-size:1rem}
+.cats .tile .sub{position:absolute;z-index:2;left:12px;right:12px;bottom:52px;font-size:.95rem;font-style:italic;opacity:.95;text-shadow:0 1px 6px rgba(0,0,0,.4)}
+.card{max-width:560px;margin:22px auto 0;background:#fff;border-radius:22px;padding:22px 20px;box-shadow:0 8px 24px rgba(91,42,61,.08);border:1px solid rgba(91,42,61,.06)}
+.card h2{font-size:1.5rem;font-weight:800;color:var(--vino);margin-bottom:8px;line-height:1.05}
+.card p{font-size:1.12rem;color:#5d3a48}
+.card .q{font-size:1.5rem;font-style:italic;text-align:center;color:var(--malva);line-height:1.25}
+.wrapc{padding:0 16px}
+.care-toggle{display:block;width:100%;margin-top:14px;padding:12px 16px;border-radius:14px;border:1.5px solid var(--vino);background:transparent;color:var(--vino);font-size:1.15rem;font-weight:700;cursor:pointer}
+.care-full{display:none;margin-top:16px}.care-full.open{display:block}
+.care-full h3{font-size:1.3rem;font-weight:800;color:var(--vino);margin:16px 0 8px}
+.care-full p,.care-full li{font-size:1.1rem;color:#5d3a48;margin-bottom:10px}
+.care-full ol{margin:8px 0 12px 20px}
+.care-full li strong{color:var(--vino)}
+.care-closing{font-style:italic;text-align:center;color:var(--malva)!important;font-size:1.2rem!important;line-height:1.4}
+footer{margin-top:36px;padding:30px 16px 90px;text-align:center;background:var(--vino);color:#f3dfe6}
+footer h3{font-size:1.6rem;font-weight:800;color:#fff}
+footer p{font-size:1.05rem;opacity:.9}
+footer .tag{margin-top:10px;font-style:italic;font-size:1.25rem;opacity:1;color:#fff}
+.tile{position:relative;display:block;width:100%;aspect-ratio:3/4;border:1px solid rgba(255,255,255,.55);border-radius:20px;overflow:hidden;background:#b9a493;cursor:pointer;padding:0;box-shadow:0 8px 20px rgba(91,60,40,.18);text-align:left;color:#fff}
+.tile img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .35s}
+.tile:active img{transform:scale(1.04)}
+.tile::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(55,32,24,.62) 0%,rgba(55,32,24,.12) 40%,rgba(55,32,24,0) 60%,rgba(55,32,24,.25) 100%)}
+.tile .lbl{position:absolute;z-index:2;top:12px;left:12px;right:12px;font-size:.84rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;line-height:1.18;text-shadow:0 1px 6px rgba(0,0,0,.35)}
+.tile{border-radius:16px}
+.tile .lbl{top:9px;left:9px;font-size:.78rem}
+.tile .go{position:absolute;z-index:2;left:12px;bottom:12px;width:32px;height:32px;border-radius:50%;border:1px solid rgba(255,255,255,.8);background:rgba(255,255,255,.18);backdrop-filter:blur(4px);display:flex;align-items:center;justify-content:center}
+.tile .go{left:9px;bottom:9px;width:26px;height:26px}
+.tile .go svg{width:13px;height:13px}
+</style>
 </head>
-<body>
-  <div class="container">
-
-    <div class="header">
-      <img src="logo..jpg" alt="Eternals Roses by Jade Banegas" class="logo">
-      <p class="slogan">Detalles que florecen para siempre</p>
-      <div class="location">Comayagua, Honduras</div>
-    </div>
-
-    <a href="catalogo.html" class="btn-catalogo">
-      Ver catálogo completo de ramos
-    </a>
-
-    <div class="grid">
-      <a href="catalogo.html" class="card active">
-        <img class="tile-img" src="Ramo%20de%20tulipanes%20y%20rosas..JPG" alt="Ramos y flores">
-        <h3>Ramos y flores</h3>
-        <p class="subtitle">Básico a lujo</p>
-      </a>
-
-
-      <a href="joyeria.html" class="card active" style="text-decoration:none;color:inherit;">
-        <img class="tile-img" src="anillos.jpeg" alt="Joyería y accesorios">
-        <h3>Joyería y accesorios</h3>
-        <p class="subtitle">Regalos adicionales</p>
-      </a>
-
-    </div>
-
-    <!-- Envíos -->
-    <div class="section">
-      <div class="section-title">Envíos y entrega</div>
-      <p style="font-size: 0.95rem; color: #444; text-align: center; line-height: 1.6;">
-        Realizamos <strong>envíos a domicilio</strong> y puntos de entrega coordinados en el municipio de <strong>Comayagua</strong> y zonas aledañas.
-      </p>
-      <p style="font-size: 0.88rem; color: #666; text-align: center; margin-top: 8px;">
-        Consulta disponibilidad y horarios por WhatsApp.
-      </p>
-    </div>
-
-    <!-- Filosofía -->
-    <div class="section">
-      <div class="section-title">Filosofía Empresarial de Eternal Roses</div>
-      <p class="philosophy">“Cultivamos emociones, florecemos recuerdos.”</p>
-    </div>
-
-    <!-- Cuidados de tus flores (expandible) -->
-    <div class="section">
-      <div class="section-title">Cuidados de tus flores</div>
-      
-      <p class="care-preview">
-        Flores de primera calidad, detalles que perduran. En Eternal Roses seleccionamos cuidadosamente flores frescas de primera calidad para crear arreglos que transmitan emociones y acompañen tus momentos más especiales.
-      </p>
-
-      <button class="care-toggle" id="careToggle" onclick="toggleCare()">
-        Ver guía completa de cuidados
-      </button>
-
-      <div class="care-full" id="careFull">
+<body class="">
+<header class="hero"><div class="in">
+<img class="logo" src="logo..jpg" alt="Eternals Roses by Jade Banegas">
+<h1>Detalles que florecen <em>para siempre</em></h1>
+<div class="foto"><img src="r/35.jpg" alt="Ramo de tulipanes y rosas"></div>
+</div></header>
+<h2 class="sect-t">Nuestros catálogos<small>Elige lo que buscas</small></h2>
+<div class="cats">
+<a class="tile" href="catalogo.html"><img src="r/35.jpg" alt=""><span class="lbl">Ramos y flores</span><span class="sub">Básico a lujo</span><span class="go"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+<a class="tile" href="joyeria.html"><img src="anillos.jpeg" alt=""><span class="lbl">Joyería y accesorios</span><span class="sub">Regalos adicionales</span><span class="go"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+</div>
+<div class="wrapc">
+<div class="card"><h2>Envíos y entrega</h2><p>Realizamos <strong>envíos a domicilio</strong> y puntos de entrega coordinados en el municipio de <strong>Comayagua</strong> y zonas aledañas. Consulta disponibilidad y horarios por WhatsApp.</p></div>
+<div class="card"><p class="q">“Cultivamos emociones, florecemos recuerdos.”</p></div>
+<div class="card"><h2>Cuidados de tus flores</h2>
+<p>Flores de primera calidad, detalles que perduran. Seleccionamos cuidadosamente flores frescas para crear arreglos que acompañen tus momentos más especiales.</p>
+<button class="care-toggle" id="careToggle" onclick="toggleCare()">Ver guía completa de cuidados</button>
+<div class="care-full" id="careFull">
         <p>
           Cada ramo es elaborado con dedicación, cuidando cada detalle para ofrecerte belleza, frescura y calidad. Queremos que disfrutes de tus flores durante el mayor tiempo posible, por eso incluimos un sobre de alimento floral y te compartimos algunas recomendaciones para mantenerlas hermosas.
         </p>
@@ -454,29 +119,14 @@
           En Eternal Roses queremos que cada flor siga transmitiendo el cariño con el que fue elegida.<br>
           Cuida tus flores, prolonga su belleza y disfruta cada momento.
         </p>
-      </div>
-    </div>
+      </div></div>
+</div>
+<footer><h3>Eternals Roses</h3><p>Comayagua, Honduras</p><p>WhatsApp: +504 9422-1224</p><p class="tag">Detalles que florecen para siempre</p></footer>
 
-    <div class="footer">
-      <p><strong>Eternal Roses</strong></p>
-      <p>Detalles que florecen para siempre</p>
-    </div>
-  </div>
-
-  <a href="https://wa.me/50494221224?text=Hola%2C%20quiero%20información%20sobre%20los%20arreglos%20florales" 
-     class="whatsapp-float" target="_blank" rel="noopener" title="Escribir por WhatsApp" aria-label="WhatsApp"><svg viewBox="0 0 24 24" width="30" height="30" fill="#fff" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.5l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.8 11.9 11.9 0 0 0 4.6 4.1c1.7.7 2.4.8 3.2.7a2.7 2.7 0 0 0 1.8-1.3 2.2 2.2 0 0 0 .2-1.3c-.1-.1-.2-.2-.5-.3z"/></svg></a>
-
-  <script>
-    function toggleCare() {
-      const full = document.getElementById('careFull');
-      const btn = document.getElementById('careToggle');
-      full.classList.toggle('open');
-      if (full.classList.contains('open')) {
-        btn.textContent = 'Ocultar guía de cuidados';
-      } else {
-        btn.textContent = 'Ver guía completa de cuidados';
-      }
-    }
-  </script>
+<a class="wa-float" href="https://wa.me/50494221224?text=Hola%2C%20quiero%20informaci%C3%B3n" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24" width="30" height="30" fill="#fff" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.5l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.8 11.9 11.9 0 0 0 4.6 4.1c1.7.7 2.4.8 3.2.7a2.7 2.7 0 0 0 1.8-1.3 2.2 2.2 0 0 0 .2-1.3c-.1-.1-.2-.2-.5-.3z"/></svg></a>
+<script>
+var WAICON="<svg viewBox=\"0 0 24 24\" width=\"30\" height=\"30\" fill=\"#fff\" aria-hidden=\"true\"><path d=\"M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.5l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.8 11.9 11.9 0 0 0 4.6 4.1c1.7.7 2.4.8 3.2.7a2.7 2.7 0 0 0 1.8-1.3 2.2 2.2 0 0 0 .2-1.3c-.1-.1-.2-.2-.5-.3z\"/></svg>";var WA="50494221224";
+function toggleCare(){var f=document.getElementById('careFull'),b=document.getElementById('careToggle');f.classList.toggle('open');b.textContent=f.classList.contains('open')?'Ocultar guía de cuidados':'Ver guía completa de cuidados'}
+</script>
 </body>
 </html>
