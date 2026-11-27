@@ -179,6 +179,13 @@
     footer p { font-size: 1.1rem; }
     footer .tagline { font-size: 1.3rem; }
     .whatsapp svg { display: block; }
+    .card { position: relative; }
+    .num {
+      position: absolute; top: 8px; left: 8px;
+      background: rgba(255,255,255,.92); color: #b45a6b;
+      font-size: 1rem; font-weight: 700; padding: 1px 10px;
+      border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,.15);
+    }
 
   </style>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -218,10 +225,8 @@
     const grid = document.getElementById('grid');
     items.forEach(item => {
       const src = encodeURIComponent(item.folder) + '/' + encodeURIComponent(item.file);
-      // Enlace completo de la foto: WhatsApp lo muestra como vista previa con la imagen
-      const fotoUrl = new URL(src, location.href).href;
-      const mensaje = 'Hola, me interesa esta pieza de joyería (N.° ' + item.n + '):\n' +
-                      fotoUrl + '\n¿Me confirmas disponibilidad y precio?';
+      const texto = 'Hola, me interesa la pieza N.° ' + item.n +
+                    ' del catálogo de joyería. ¿Me confirmas disponibilidad y precio?';
 
       const card = document.createElement('div');
       card.className = 'card';
@@ -232,6 +237,10 @@
       img.alt = 'Joyería';
       img.loading = 'lazy';
 
+      const num = document.createElement('span');
+      num.className = 'num';
+      num.textContent = 'N.° ' + item.n;
+
       const body = document.createElement('div');
       body.className = 'card-body';
 
@@ -240,10 +249,31 @@
       btn.target = '_blank';
       btn.rel = 'noopener';
       btn.textContent = 'Consultar por WhatsApp';
-      btn.href = 'https://wa.me/50494221224?text=' + encodeURIComponent(mensaje);
+      btn.href = 'https://wa.me/50494221224?text=' + encodeURIComponent(texto);
+
+      // En celulares: comparte la foto real de la pieza, sin mostrar ningún enlace
+      btn.addEventListener('click', async (e) => {
+        e.preventDefault();
+        try {
+          if (navigator.canShare && navigator.share) {
+            const resp = await fetch(src);
+            if (!resp.ok) throw new Error('foto');
+            const blob = await resp.blob();
+            const file = new File([blob], 'pieza-joyeria.jpg', { type: blob.type || 'image/jpeg' });
+            if (navigator.canShare({ files: [file] })) {
+              await navigator.share({ files: [file], text: texto });
+              return;
+            }
+          }
+        } catch (err) {
+          if (err && err.name === 'AbortError') return; // la persona canceló
+        }
+        window.open(btn.href, '_blank', 'noopener');
+      });
 
       body.appendChild(btn);
       card.appendChild(img);
+      card.appendChild(num);
       card.appendChild(body);
       grid.appendChild(card);
     });
