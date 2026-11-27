@@ -225,8 +225,10 @@
     const grid = document.getElementById('grid');
     items.forEach(item => {
       const src = encodeURIComponent(item.folder) + '/' + encodeURIComponent(item.file);
-      const texto = 'Hola, me interesa la pieza N.° ' + item.n +
-                    ' del catálogo de joyería. ¿Me confirmas disponibilidad y precio?';
+      // Enlace de la foto: WhatsApp lo muestra como vista previa con la imagen de la pieza
+      const fotoUrl = new URL(src, location.href).href;
+      const texto = 'Hola, me interesa la pieza N.° ' + item.n + ' del catálogo de joyería:\n' +
+                    fotoUrl + '\n¿Me confirmas disponibilidad y precio?';
 
       const card = document.createElement('div');
       card.className = 'card';
